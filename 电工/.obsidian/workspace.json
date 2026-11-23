@@ -1,0 +1,287 @@
+{
+  "main": {
+    "id": "b5d56668b86981ae",
+    "type": "split",
+    "children": [
+      {
+        "id": "d93049b1a5c34315",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "0c67d22d59671224",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "未命名.md",
+                "mode": "source",
+                "source": false
+              },
+              "icon": "lucide-file",
+              "title": "未命名"
+            }
+          },
+          {
+            "id": "c1872ffb2400967e",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "dump/未命名.md",
+                "mode": "source",
+                "source": false
+              },
+              "icon": "lucide-file",
+              "title": "未命名"
+            }
+          },
+          {
+            "id": "8d7abd1067cbb64c",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "相量.md",
+                "mode": "source",
+                "source": false
+              },
+              "icon": "lucide-file",
+              "title": "相量"
+            }
+          },
+          {
+            "id": "a38c9c1694319465",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "品质因数.md",
+                "mode": "source",
+                "source": false
+              },
+              "icon": "lucide-file",
+              "title": "品质因数"
+            }
+          },
+          {
+            "id": "e659b6775b6a0e12",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "错题/未命名.md",
+                "mode": "source",
+                "source": false
+              },
+              "icon": "lucide-file",
+              "title": "未命名"
+            }
+          }
+        ],
+        "currentTab": 4
+      }
+    ],
+    "direction": "vertical"
+  },
+  "left": {
+    "id": "b73f8ba0d1b2757b",
+    "type": "split",
+    "children": [
+      {
+        "id": "c5ec57d2c4bf18b6",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "d980e807cf392626",
+            "type": "leaf",
+            "state": {
+              "type": "file-explorer",
+              "state": {
+                "sortOrder": "alphabetical",
+                "autoReveal": false,
+                "showSearch": false,
+                "searchQuery": ""
+              },
+              "icon": "lucide-folder-closed",
+              "title": "文件列表"
+            }
+          },
+          {
+            "id": "034f2419abd9ad73",
+            "type": "leaf",
+            "state": {
+              "type": "search",
+              "state": {
+                "query": "",
+                "matchingCase": false,
+                "explainSearch": false,
+                "collapseAll": false,
+                "extraContext": false,
+                "sortOrder": "alphabetical"
+              },
+              "icon": "lucide-search",
+              "title": "搜索"
+            }
+          },
+          {
+            "id": "634cfaa8408af1aa",
+            "type": "leaf",
+            "state": {
+              "type": "bookmarks",
+              "state": {
+                "showSearch": false,
+                "searchQuery": ""
+              },
+              "icon": "lucide-bookmark",
+              "title": "书签"
+            }
+          }
+        ]
+      }
+    ],
+    "direction": "horizontal",
+    "width": 200
+  },
+  "right": {
+    "id": "828abbf8f9352309",
+    "type": "split",
+    "children": [
+      {
+        "id": "917f812cd561bf97",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "282cc786512b6f31",
+            "type": "leaf",
+            "state": {
+              "type": "backlink",
+              "state": {
+                "file": "未命名.md",
+                "collapseAll": false,
+                "extraContext": false,
+                "sortOrder": "alphabetical",
+                "showSearch": false,
+                "searchQuery": "",
+                "backlinkCollapsed": false,
+                "unlinkedCollapsed": true
+              },
+              "icon": "links-coming-in",
+              "title": "反向链接"
+            }
+          },
+          {
+            "id": "3f898201e3dfa23f",
+            "type": "leaf",
+            "state": {
+              "type": "outgoing-link",
+              "state": {
+                "file": "未命名.md",
+                "linksCollapsed": false,
+                "unlinkedCollapsed": true
+              },
+              "icon": "links-going-out",
+              "title": "出链"
+            }
+          },
+          {
+            "id": "79e0da56c8ca6e21",
+            "type": "leaf",
+            "state": {
+              "type": "tag",
+              "state": {
+                "sortOrder": "frequency",
+                "useHierarchy": true,
+                "showSearch": false,
+                "searchQuery": ""
+              },
+              "icon": "lucide-tags",
+              "title": "标签"
+            }
+          },
+          {
+            "id": "e1962d204f6d2cef",
+            "type": "leaf",
+            "state": {
+              "type": "all-properties",
+              "state": {
+                "sortOrder": "frequency",
+                "showSearch": false,
+                "searchQuery": ""
+              },
+              "icon": "lucide-archive",
+              "title": "添加笔记属性"
+            }
+          },
+          {
+            "id": "1a0fc2d3467d9933",
+            "type": "leaf",
+            "state": {
+              "type": "outline",
+              "state": {
+                "file": "未命名.md",
+                "followCursor": false,
+                "showSearch": false,
+                "searchQuery": ""
+              },
+              "icon": "lucide-list",
+              "title": "大纲"
+            }
+          }
+        ]
+      }
+    ],
+    "direction": "horizontal",
+    "width": 300,
+    "collapsed": true
+  },
+  "left-ribbon": {
+    "hiddenItems": {
+      "switcher:打开快速切换": false,
+      "graph:查看关系图谱": false,
+      "canvas:新建白板": false,
+      "daily-notes:打开/创建今天的日记": false,
+      "templates:插入模板": false,
+      "command-palette:打开命令面板": false,
+      "bases:新建数据库": false,
+      "obsidian-advanced-slides:Show Slide Preview": false
+    }
+  },
+  "active": "e659b6775b6a0e12",
+  "lastOpenFiles": [
+    "Pasted image 20261118211336.png",
+    "错题/未命名.md",
+    "品质因数.md",
+    "错题/Pasted image (3).png",
+    "相量.md",
+    "未命名 4.md",
+    "未命名 3.md",
+    "未命名 2.md",
+    "dump/三相交流电.md",
+    "阻抗计算阻抗模.md",
+    "交流电路基本规律.md",
+    "错题/振荡电路.md",
+    "Screenshot from 2026-11-18 03-20-18.png",
+    "三相电-功率.md",
+    "Pasted image 20261114114017.png",
+    "Pasted image 20261113223520.png",
+    "错点 零碎.md",
+    "未命名.md",
+    "未命名 1.md",
+    "电工学（上册）·电工技术 第6版 (秦曾煌 编) (z-library.sk, 1lib.sk, z-lib.sk).pdf",
+    "相量法 2.md",
+    "对称分量法（Symmetrical Components）.md",
+    "Pasted image 20261113213305.png",
+    "错题/Pasted image 20261113211826.png",
+    "MIT6_061S11_ch4.txt",
+    "MIT6_061S11_ch4.pdf",
+    "__pycache__/fix_latex.cpython-312.pyc",
+    "__pycache__",
+    "fix_latex.py",
+    "相量.md.2521764494",
+    "相量.md.1094677768",
+    "相量.md.2528639463",
+    "dump/未命名.md",
+    "dump",
+    "Pasted image 20261112225309.png"
+  ]
+}

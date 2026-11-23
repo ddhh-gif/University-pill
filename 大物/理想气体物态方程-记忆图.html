@@ -1,0 +1,395 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>理想气体物态方程 · 记忆图</title>
+<style>
+:root{
+  --macro:#c2410c; --macro-bg:#fff7ed; --macro-bd:#fdba74;
+  --micro:#1d4ed8; --micro-bg:#eff6ff; --micro-bd:#93c5fd;
+  --bridge:#15803d; --bridge-bg:#f0fdf4; --bridge-bd:#86efac;
+  --ink:#1f2937; --dim:#6b7280; --warn:#b91c1c; --warn-bg:#fef2f2;
+  --line:#e5e7eb; --card:#fff;
+}
+*{box-sizing:border-box}
+body{
+  margin:0; padding:24px 16px 80px;
+  font-family:"PingFang SC","Microsoft YaHei","Noto Sans CJK SC",sans-serif;
+  color:var(--ink); background:#f9fafb; line-height:1.7;
+}
+.wrap{max-width:980px;margin:0 auto}
+h1{font-size:26px;margin:0 0 4px;text-align:center}
+.sub{text-align:center;color:var(--dim);font-size:14px;margin:0 0 28px}
+section{
+  background:var(--card); border:1px solid var(--line); border-radius:12px;
+  padding:20px 22px; margin:0 0 20px;
+}
+h2{font-size:19px;margin:0 0 16px;padding-left:10px;border-left:4px solid var(--ink)}
+h2 .no{color:var(--dim);font-size:14px;margin-right:6px}
+h3{font-size:15px;margin:18px 0 10px;color:var(--dim)}
+p{margin:8px 0}
+.mono{font-family:"Cambria Math","Latin Modern Math",Georgia,serif;font-style:italic}
+.fx{font-family:"Cambria Math",Georgia,serif;font-size:19px;white-space:nowrap}
+.fx .up{font-style:normal}
+.frac{display:inline-block;vertical-align:middle;text-align:center;margin:0 2px}
+.frac>span{display:block;padding:0 4px}
+.frac>span:first-child{border-bottom:1.5px solid currentColor}
+.tag{
+  display:inline-block;font-size:11px;padding:1px 7px;border-radius:999px;
+  font-style:normal;vertical-align:middle;
+}
+.t-macro{background:var(--macro-bg);color:var(--macro);border:1px solid var(--macro-bd)}
+.t-micro{background:var(--micro-bg);color:var(--micro);border:1px solid var(--micro-bd)}
+.t-bridge{background:var(--bridge-bg);color:var(--bridge);border:1px solid var(--bridge-bd)}
+.pit{
+  background:var(--warn-bg); border-left:3px solid var(--warn);
+  padding:7px 10px; font-size:13px; color:var(--warn); border-radius:0 5px 5px 0;
+}
+/* 双车道主图 */
+.road{display:grid;grid-template-columns:1fr 150px 1fr;gap:0;align-items:stretch}
+.lane{border-radius:10px;padding:16px;text-align:center}
+.lane.macro{background:var(--macro-bg);border:2px solid var(--macro-bd)}
+.lane.micro{background:var(--micro-bg);border:2px solid var(--micro-bd)}
+.lane .ttl{font-weight:700;font-size:15px;margin-bottom:12px}
+.lane.macro .ttl{color:var(--macro)}
+.lane.micro .ttl{color:var(--micro)}
+.lane .eq{font-size:24px;margin:10px 0 14px;font-family:"Cambria Math",Georgia,serif}
+.lane .who{font-size:13px;color:var(--dim)}
+.bridge{display:flex;flex-direction:column;align-items:center;justify-content:center;gap:6px;padding:0 6px}
+.bridge .arr{color:var(--bridge);font-size:13px;font-weight:700;text-align:center;line-height:1.4}
+.bridge .pill{
+  background:var(--bridge-bg);border:2px solid var(--bridge-bd);color:var(--bridge);
+  border-radius:999px;padding:4px 10px;font-size:13px;font-weight:700;white-space:nowrap;
+}
+.key{
+  margin-top:16px;background:#f3f4f6;border-radius:8px;padding:10px 14px;
+  font-size:14px;text-align:center;
+}
+.key b{color:var(--macro)} .key i{color:var(--micro);font-style:normal;font-weight:700}
+/* 定义卡 */
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:12px}
+.def{border:1px solid var(--line);border-radius:10px;padding:12px 14px;background:#fff}
+.def.macro{border-left:4px solid var(--macro)}
+.def.micro{border-left:4px solid var(--micro)}
+.def.bridge{border-left:4px solid var(--bridge)}
+.def .hd{display:flex;align-items:baseline;gap:8px;flex-wrap:wrap;margin-bottom:6px}
+.def .sym{font-size:21px;font-family:"Cambria Math",Georgia,serif;font-style:italic;font-weight:700}
+.def .nm{font-weight:700;font-size:14px}
+.def .dsc{font-size:13.5px;margin:0 0 8px}
+.def .unit{font-size:12.5px;color:var(--dim);font-family:Georgia,serif}
+.def .pit{margin-top:8px}
+/* 步进器 */
+.step{background:#f9fafb;border:1px solid var(--line);border-radius:10px;padding:22px 16px;text-align:center;min-height:120px}
+.step .now{font-size:27px;font-family:"Cambria Math",Georgia,serif;margin-bottom:10px}
+.step .hl{background:#fef08a;border-radius:4px;padding:0 3px}
+.step .note{font-size:13.5px;color:var(--dim)}
+.ctrl{display:flex;gap:10px;justify-content:center;align-items:center;margin-top:14px}
+button{
+  font:inherit;font-size:14px;padding:7px 16px;border-radius:8px;cursor:pointer;
+  border:1px solid #d1d5db;background:#fff;color:var(--ink);
+}
+button:hover:not(:disabled){background:#f3f4f6}
+button:disabled{opacity:.4;cursor:not-allowed}
+.dots{display:flex;gap:6px}
+.dots i{width:8px;height:8px;border-radius:50%;background:#d1d5db;display:block}
+.dots i.on{background:var(--ink)}
+/* 常数卡 */
+.consts{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:12px}
+.cst{border:1px solid var(--line);border-radius:10px;padding:12px;text-align:center}
+.cst .v{font-size:16px;font-family:Georgia,serif;margin:4px 0}
+.cst .n{font-size:12.5px;color:var(--dim)}
+.verify{margin-top:14px;text-align:center;background:var(--bridge-bg);border:1px solid var(--bridge-bd);border-radius:10px;padding:14px}
+.verify .out{font-size:17px;font-family:Georgia,serif;margin-top:8px;min-height:26px;color:var(--bridge);font-weight:700}
+/* 决策树 */
+.tree{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-top:10px}
+.br{border-radius:10px;padding:14px}
+.br.macro{background:var(--macro-bg);border:1px solid var(--macro-bd)}
+.br.micro{background:var(--micro-bg);border:1px solid var(--micro-bd)}
+.br .q{font-size:13.5px;font-weight:700;margin-bottom:8px}
+.br.macro .q{color:var(--macro)} .br.micro .q{color:var(--micro)}
+.br ul{margin:0 0 10px;padding-left:20px;font-size:13.5px}
+.br .res{text-align:center;font-size:20px;font-family:"Cambria Math",Georgia,serif;background:#fff;border-radius:8px;padding:8px}
+.ask{text-align:center;font-weight:700;font-size:14px;background:#f3f4f6;border-radius:8px;padding:8px}
+/* 表格 */
+table{width:100%;border-collapse:collapse;font-size:13.5px}
+th,td{border:1px solid var(--line);padding:8px 10px;text-align:left}
+th{background:#f3f4f6;font-size:13px}
+td.c{font-family:"Cambria Math",Georgia,serif;font-style:italic;font-size:16px;text-align:center;white-space:nowrap}
+/* 例题 / 折叠 */
+details{border:1px solid var(--line);border-radius:10px;padding:0;margin-bottom:12px;overflow:hidden}
+details[open]{padding-bottom:4px}
+summary{cursor:pointer;padding:12px 14px;font-weight:700;font-size:14px;background:#f9fafb;list-style:none}
+summary::-webkit-details-marker{display:none}
+summary::before{content:"▸ ";color:var(--dim)}
+details[open] summary::before{content:"▾ "}
+.body{padding:4px 16px 10px}
+.qt{background:#f9fafb;border-left:3px solid #d1d5db;padding:10px 12px;font-size:13.5px;margin-bottom:12px;border-radius:0 6px 6px 0}
+.stepline{margin:10px 0;padding-left:14px;border-left:2px solid var(--line)}
+.stepline .lb{font-size:12.5px;color:var(--dim);display:block}
+.stepline .fm{font-size:17px;font-family:"Cambria Math",Georgia,serif}
+.ans{background:var(--bridge-bg);border:1px solid var(--bridge-bd);border-radius:8px;padding:10px 12px;font-size:14px;color:#14532d;margin-top:10px}
+/* 自测 */
+.opts{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:10px;margin:12px 0}
+.opt{text-align:left;font-family:"Cambria Math",Georgia,serif;font-size:17px;padding:10px 14px}
+.opt.ok{background:var(--bridge-bg);border-color:var(--bridge);color:var(--bridge);font-weight:700}
+.opt.no{background:var(--warn-bg);border-color:var(--warn);color:var(--warn)}
+.fb{font-size:13.5px;min-height:22px;padding:10px 12px;border-radius:8px;display:none}
+.fb.show{display:block}
+.fb.good{background:var(--bridge-bg);color:#14532d}
+.fb.bad{background:var(--warn-bg);color:var(--warn)}
+@media(max-width:720px){
+  .road{grid-template-columns:1fr;gap:12px}
+  .bridge{flex-direction:row;padding:4px 0}
+  .tree{grid-template-columns:1fr}
+}
+</style>
+</head>
+<body>
+<div class="wrap">
+<h1>理想气体物态方程 · 记忆图</h1>
+<p class="sub">两套计量系统 · 一座桥 · 十一个物理量</p>
+
+<section>
+<h2><span class="no">01</span>双车道：同一个方程的两种语言</h2>
+<p>晕的根源在这里：气体的"量"有两种数法 —— 按<b style="color:var(--macro)">摩尔</b>数（配 <span class="mono">R</span>），或按<b style="color:var(--micro)">分子个数</b>数（配 <span class="mono">k</span>）。<span class="mono">N</span><sub>A</sub> 是两者之间唯一的桥。</p>
+<div class="road">
+  <div class="lane macro">
+    <div class="ttl">宏观车道 · 以 mol 计量</div>
+    <div class="eq"><i>pV</i> = <span class="frac"><span><i>m</i></span><span><i>M</i></span></span> <i>RT</i></div>
+    <div class="who">量：物质的量 <span class="mono">ν = m/M</span>（单位 mol）<br>常量：摩尔气体常量 <span class="mono">R</span></div>
+  </div>
+  <div class="bridge">
+    <div class="pill"><i class="mono">R</i> = <i class="mono">k</i>·<i class="mono">N</i><sub>A</sub></div>
+    <div class="arr">÷ <i class="mono">N</i><sub>A</sub> →<br>← × <i class="mono">N</i><sub>A</sub></div>
+    <div class="pill"><i class="mono">N</i> = <i class="mono">ν</i>·<i class="mono">N</i><sub>A</sub></div>
+  </div>
+  <div class="lane micro">
+    <div class="ttl">微观车道 · 以"个"计量</div>
+    <div class="eq"><i>p</i> = <i>nkT</i></div>
+    <div class="who">量：分子数密度 <span class="mono">n = N/V</span>（单位 m⁻³）<br>常量：玻尔兹曼常量 <span class="mono">k</span></div>
+  </div>
+</div>
+<div class="key">口诀：<b>R 配摩尔</b>，<i>k 配分子</i>。<span class="mono">k</span> 就是把 <span class="mono">R</span> 摊到每一个分子头上 —— 所以 <span class="mono">k = R/N</span><sub>A</sub>，数值上小 23 个数量级。</div>
+</section>
+
+<section>
+<h2><span class="no">02</span>物理量定义卡</h2>
+<h3>宏观组 · 走 R 车道</h3>
+<div class="grid">
+  <div class="def macro"><div class="hd"><span class="sym">p</span><span class="nm">压强</span><span class="tag t-macro">宏观</span></div>
+    <p class="dsc">气体对器壁单位面积的垂直作用力。微观上是大量分子碰撞器壁的平均效果。</p>
+    <div class="unit">单位：Pa = N/m²</div></div>
+  <div class="def macro"><div class="hd"><span class="sym">V</span><span class="nm">体积</span><span class="tag t-macro">宏观</span></div>
+    <p class="dsc">气体分子能够自由活动的空间，即容器的容积。</p>
+    <div class="unit">单位：m³</div>
+    <div class="pit">坑：不是所有分子自身体积之和。</div></div>
+  <div class="def macro"><div class="hd"><span class="sym">T</span><span class="nm">热力学温度</span><span class="tag t-macro">宏观</span></div>
+    <p class="dsc">标志系统热平衡状态的物理量，微观上正比于分子的平均平动动能。</p>
+    <div class="unit">单位：K　　T/K = t/℃ + 273.15</div>
+    <div class="pit">坑：方程里必须用 K。例 2 的 −3.0 ℃ 要换成 270.15 K，45 ℃ 换成 318.15 K，直接代摄氏度必错。</div></div>
+  <div class="def macro"><div class="hd"><span class="sym">m</span><span class="nm">质量</span><span class="tag t-macro">宏观</span></div>
+    <p class="dsc">容器内气体的总质量。</p>
+    <div class="unit">单位：kg</div></div>
+  <div class="def macro"><div class="hd"><span class="sym">M</span><span class="nm">摩尔质量</span><span class="tag t-macro">宏观</span></div>
+    <p class="dsc">1 mol 该物质的质量，由气体种类决定（如空气约 29×10⁻³ kg/mol）。</p>
+    <div class="unit">单位：kg/mol</div>
+    <div class="pit">坑：<span class="mono">m</span> 是总质量、<span class="mono">M</span> 是摩尔质量，只有 <span class="mono">m/M</span> 才是物质的量。</div></div>
+  <div class="def macro"><div class="hd"><span class="sym">ν = m/M</span><span class="nm">物质的量</span><span class="tag t-macro">宏观</span></div>
+    <p class="dsc">气体一共包含多少摩尔。总质量除以每摩尔的质量。</p>
+    <div class="unit">单位：mol</div></div>
+  <div class="def macro"><div class="hd"><span class="sym">R</span><span class="nm">摩尔气体常量</span><span class="tag t-macro">宏观</span></div>
+    <p class="dsc">1 mol 理想气体的 <span class="mono">pV/T</span> 值。由阿伏伽德罗定律可知，它对各种气体都一样，所以是个普适常量。</p>
+    <div class="unit">R = 8.31 J·mol⁻¹·K⁻¹</div></div>
+</div>
+<h3>桥 · 两套系统的换算</h3>
+<div class="grid">
+  <div class="def bridge"><div class="hd"><span class="sym">N<sub style="font-size:13px">A</sub></span><span class="nm">阿伏伽德罗常量</span><span class="tag t-bridge">桥</span></div>
+    <p class="dsc">1 mol 任何物质所含的微粒数。乘它从 mol 到"个"，除它从"个"回 mol。</p>
+    <div class="unit">N<sub>A</sub> = 6.02×10²³ mol⁻¹</div></div>
+</div>
+<h3>微观组 · 走 k 车道</h3>
+<div class="grid">
+  <div class="def micro"><div class="hd"><span class="sym">N</span><span class="nm">分子总数</span><span class="tag t-micro">微观</span></div>
+    <p class="dsc">气体中分子的个数，<span class="mono">N = ν·N</span><sub>A</sub> = (m/M)·N<sub>A</sub>。</p>
+    <div class="unit">单位：个（无量纲）</div></div>
+  <div class="def micro"><div class="hd"><span class="sym">n = N/V</span><span class="nm">分子数密度</span><span class="tag t-micro">微观</span></div>
+    <p class="dsc">单位体积内的分子个数，描述气体的"密集程度"。</p>
+    <div class="unit">单位：m⁻³</div>
+    <div class="pit">最大的坑：这本书里 <span class="mono">n</span> 是<b>分子数密度</b>，不是物质的量！别的书常用 <span class="mono">n</span> 表示摩尔数，混起来必错。本书的物质的量写作 <span class="mono">m/M</span>。</div></div>
+  <div class="def micro"><div class="hd"><span class="sym">k</span><span class="nm">玻尔兹曼常量</span><span class="tag t-micro">微观</span></div>
+    <p class="dsc">摊到<b>每一个分子</b>头上的气体常量，<span class="mono">k = R/N</span><sub>A</sub>。</p>
+    <div class="unit">k = 1.38×10⁻²³ J·K⁻¹</div></div>
+</div>
+</section>
+<section>
+<h2><span class="no">03</span>推导步进器：第二种表示是推出来的</h2>
+<div class="step">
+  <div class="now" id="eq"></div>
+  <div class="note" id="nt"></div>
+</div>
+<div class="ctrl">
+  <button id="prev">← 上一步</button>
+  <div class="dots" id="dots"></div>
+  <button id="next">下一步 →</button>
+  <button id="rst">重置</button>
+</div>
+</section>
+
+<section>
+<h2><span class="no">04</span>三个常数 · 亲手验算 k = R/N<sub>A</sub></h2>
+<div class="consts">
+  <div class="cst"><div class="n">摩尔气体常量</div><div class="v"><i class="mono">R</i> = 8.31</div><div class="n">J·mol⁻¹·K⁻¹</div></div>
+  <div class="cst"><div class="n">阿伏伽德罗常量</div><div class="v"><i class="mono">N</i><sub>A</sub> = 6.02×10²³</div><div class="n">mol⁻¹</div></div>
+  <div class="cst"><div class="n">玻尔兹曼常量</div><div class="v"><i class="mono">k</i> = 1.38×10⁻²³</div><div class="n">J·K⁻¹</div></div>
+</div>
+<div class="verify">
+  <button id="vb">点击验算 8.31 ÷ 6.02×10²³</button>
+  <div class="out" id="vo"></div>
+</div>
+<p style="font-size:13.5px;color:var(--dim);margin-top:12px">单位也对得上：J·mol⁻¹·K⁻¹ ÷ mol⁻¹ = J·K⁻¹。<span class="mono">R</span> 带 mol、<span class="mono">k</span> 不带 mol —— 这就是判断该用哪个常量的量纲自检法。</p>
+</section>
+
+<section>
+<h2><span class="no">05</span>选式决策树：题目问什么，就走哪条车道</h2>
+<div class="ask">先问自己：题目给的和要求的，是"多少克/多少摩尔"，还是"多少个分子"？</div>
+<div class="tree">
+  <div class="br macro">
+    <div class="q">出现这些 → 走宏观车道</div>
+    <ul><li>质量 m、摩尔质量 M</li><li>物质的量、打进多少气</li><li>气体密度、总重量</li></ul>
+    <div class="res"><i>pV</i> = <span class="frac"><span><i>m</i></span><span><i>M</i></span></span> <i>RT</i></div>
+  </div>
+  <div class="br micro">
+    <div class="q">出现这些 → 走微观车道</div>
+    <ul><li>分子数 N、分子数密度 n</li><li>单个分子的质量</li><li>每立方米有多少个分子</li></ul>
+    <div class="res"><i>p</i> = <i>nkT</i>　或　<i>pV</i> = <i>NkT</i></div>
+  </div>
+</div>
+</section>
+
+<section>
+<h2><span class="no">06</span>易混符号对照表</h2>
+<table>
+<thead><tr><th>符号</th><th>本书含义</th><th>单位</th><th>配哪个常量</th></tr></thead>
+<tbody>
+<tr><td class="c">m</td><td>气体总质量</td><td>kg</td><td class="c">R</td></tr>
+<tr><td class="c">M</td><td>摩尔质量（1 mol 的质量）</td><td>kg/mol</td><td class="c">R</td></tr>
+<tr><td class="c">m/M = ν</td><td><b>物质的量</b></td><td>mol</td><td class="c">R</td></tr>
+<tr><td class="c">n</td><td><b style="color:var(--warn)">分子数密度 N/V</b>（不是摩尔数！）</td><td>m⁻³</td><td class="c">k</td></tr>
+<tr><td class="c">N</td><td>分子总数</td><td>个</td><td class="c">k</td></tr>
+<tr><td class="c">N<sub>A</sub></td><td>1 mol 的分子个数（桥）</td><td>mol⁻¹</td><td>—</td></tr>
+<tr><td class="c">R</td><td>摩尔气体常量（每 mol）</td><td>J·mol⁻¹·K⁻¹</td><td>—</td></tr>
+<tr><td class="c">k</td><td>玻尔兹曼常量（每个分子）</td><td>J·K⁻¹</td><td>—</td></tr>
+</tbody>
+</table>
+</section>
+<section>
+<h2><span class="no">07</span>两道例题 · 车道选择实战</h2>
+<details>
+<summary>例 1 · 问"分子数" → 微观车道</summary>
+<div class="body">
+<div class="qt">理想气体体积为 <span class="mono">V</span>，压强为 <span class="mono">p</span>，温度为 <span class="mono">T</span>。一个分子的质量为 <span class="mono">m</span>，<span class="mono">k</span> 为玻尔兹曼常量，<span class="mono">R</span> 为摩尔气体常量，则该理想气体的分子数为？</div>
+<div class="stepline"><span class="lb">① 看关键词</span><span class="fm">问"分子数" → 微观车道，用 p = nkT</span></div>
+<div class="stepline"><span class="lb">② 由数密度定义</span><span class="fm"><i>n</i> = <i>N</i>/<i>V</i>　⟹　<i>N</i> = <i>nV</i></span></div>
+<div class="stepline"><span class="lb">③ 从 p = nkT 解出 n</span><span class="fm"><i>n</i> = <i>p</i>/(<i>kT</i>)</span></div>
+<div class="stepline"><span class="lb">④ 代回</span><span class="fm"><i>N</i> = <i>pV</i>/(<i>kT</i>)</span></div>
+<div class="ans">答案 <b>(B)</b>。注意题目给的 <span class="mono">m</span> 是<b>单个分子</b>的质量，是干扰项；<span class="mono">R</span> 也是干扰项 —— 数分子个数只认 <span class="mono">k</span>。</div>
+</div>
+</details>
+<details>
+<summary>例 2 · 问"打几次气" → 宏观车道</summary>
+<div class="body">
+<div class="qt">打气筒每打一次，可将原来压强 <span class="mono">p</span><sub>0</sub> = 1.013×10⁵ Pa、温度 <span class="mono">t</span><sub>0</sub> = −3.0 ℃、体积 <span class="mono">V</span><sub>0</sub> = 4.0×10⁻³ m³ 的空气压缩到容器中。容器容积 <span class="mono">V</span> = 1.5 m³，要使容器内压强由 <span class="mono">p</span><sub>0</sub> 变为 <span class="mono">p</span> = 2.026×10⁵ Pa，温度保持 <span class="mono">t</span> = 45 ℃，问需打几次气？</div>
+<div class="stepline"><span class="lb">① 看关键词</span><span class="fm">打气 = 往里加<b>质量</b> → 宏观车道，用 pV = (m/M)RT</span></div>
+<div class="stepline"><span class="lb">② 先全部换成开尔文</span><span class="fm"><i>T</i><sub>0</sub> = 270.15 K，　<i>T</i> = 318.15 K</span></div>
+<div class="stepline"><span class="lb">③ 每打一次打入的气体质量</span><span class="fm">Δ<i>m</i> = <span class="frac"><span><i>p</i><sub>0</sub><i>V</i><sub>0</sub><i>M</i></span><span><i>RT</i><sub>0</sub></span></span></span></div>
+<div class="stepline"><span class="lb">④ 容器中原有气体质量</span><span class="fm"><i>m</i><sub>0</sub> = <span class="frac"><span><i>p</i><sub>0</sub><i>VM</i></span><span><i>RT</i><sub>0</sub></span></span></span></div>
+<div class="stepline"><span class="lb">⑤ 终态所需总质量</span><span class="fm"><i>m</i>′ = <span class="frac"><span><i>pVM</i></span><span><i>RT</i></span></span></span></div>
+<div class="stepline"><span class="lb">⑥ 次数 = 需补的质量 ÷ 每次打入的质量（记作 <i>j</i>，避免与分子数 N 混淆）</span><span class="fm"><i>j</i> = <span class="frac"><span><i>m</i>′ − <i>m</i><sub>0</sub></span><span>Δ<i>m</i></span></span> = <span class="frac"><span><i>T</i><sub>0</sub></span><span><i>p</i><sub>0</sub><i>V</i><sub>0</sub></span></span>·( <span class="frac"><span><i>pV</i></span><span><i>T</i></span></span> − <span class="frac"><span><i>p</i><sub>0</sub><i>V</i></span><span><i>T</i><sub>0</sub></span></span> )</span></div>
+<div class="stepline"><span class="lb">⑦ 代数</span><span class="fm">pV/T ≈ 955.2，　p<sub>0</sub>V/T<sub>0</sub> ≈ 562.5，　T<sub>0</sub>/(p<sub>0</sub>V<sub>0</sub>) ≈ 0.6667</span></div>
+<div class="ans"><i class="mono">j</i> ≈ 0.6667 × (955.2 − 562.5) ≈ 261.9 → <b>需打 262 次</b>。摩尔质量 <span class="mono">M</span> 在相除时约掉了，所以不需要知道空气的 M —— 这是"打几次"这类题的通用技巧。<br><span style="font-size:12.5px;color:var(--dim)">注：此处按容器内原有空气也处于 T<sub>0</sub> 计算（与课本解法一致）。若取整方式不同，答案可能差 1 次。</span></div>
+</div>
+</details>
+</section>
+
+<section>
+<h2><span class="no">08</span>即时自测</h2>
+<p style="font-size:14px">理想气体体积 <span class="mono">V</span>、压强 <span class="mono">p</span>、温度 <span class="mono">T</span>，单个分子质量 <span class="mono">m</span>，则分子数为：</p>
+<div class="opts" id="opts"></div>
+<div class="fb" id="fb"></div>
+</section>
+
+<section>
+<h2><span class="no">09</span>概念定义条</h2>
+<details><summary>平衡态</summary><div class="body"><p>在不受外界影响的条件下，系统的宏观性质长时间不发生变化的状态。物态方程只对平衡态成立。</p></div></details>
+<details><summary>状态参量</summary><div class="body"><p>描述气体平衡态的宏观量：压强 <span class="mono">p</span>、体积 <span class="mono">V</span>、温度 <span class="mono">T</span>。物态方程就是这三个量之间的关系。</p></div></details>
+<details><summary>阿伏伽德罗定律</summary><div class="body"><p>当气体压强趋于零时，在相同温度和压强下，1 mol 任何气体的体积都相同。</p><p>这正是 <span class="mono">R</span> 能成为普适常量的根据：既然 1 mol 时 <span class="mono">p</span>、<span class="mono">V</span>、<span class="mono">T</span> 对各种气体都一样，那么 <span class="mono">pV/T</span> 这个比值自然对各种气体都一样，把它记作 <span class="mono">R</span>。</p></div></details>
+<details><summary>理想气体与实际气体</summary><div class="body"><p><b>理想气体</b>：严格遵守物态方程的气体，是一个理想模型。</p><p><b>实际气体</b>：在压强不太大、温度不太低的情况下，各种实际气体都近似地遵守这个方程。压强很大或温度很低时偏差变大。</p></div></details>
+</section>
+<script>
+/* ---- 03 推导步进器 ---- */
+var F = '<span class="frac"><span><i>m</i></span><span><i>M</i></span></span>';
+var STEPS = [
+  {eq:'<i>pV</i> = '+F+' <i>RT</i>',
+   nt:'起点：理想气体物态方程（宏观形式）。'},
+  {eq:'<i>pV</i> = '+F+' <span class="hl"><i>R</i></span><i>T</i>',
+   nt:'已知玻尔兹曼常量与 R 的关系 k = R/N<sub>A</sub>，即 R = k·N<sub>A</sub>。把 R 换掉。'},
+  {eq:'<i>pV</i> = '+F+' · <span class="hl"><i>N</i><sub>A</sub><i>k</i></span><i>T</i>',
+   nt:'代入 R = kN<sub>A</sub> 后的样子。现在盯住前面的 (m/M)·N<sub>A</sub>。'},
+  {eq:'<i>pV</i> = <span class="hl">'+F+' · <i>N</i><sub>A</sub></span> <i>kT</i>',
+   nt:'(m/M) 是物质的量（多少 mol），乘 N<sub>A</sub> 就是分子总数 N。'},
+  {eq:'<i>pV</i> = <span class="hl"><i>N</i></span><i>kT</i>',
+   nt:'得到以分子数表示的形式。两边同除以 V。'},
+  {eq:'<i>p</i> = <span class="hl"><i>n</i></span><i>kT</i>',
+   nt:'因为 N/V = n（分子数密度）。这就是理想气体物态方程的第二种表示。'}
+];
+var i = 0,
+    eqEl = document.getElementById('eq'), ntEl = document.getElementById('nt'),
+    dotsEl = document.getElementById('dots'),
+    pv = document.getElementById('prev'), nx = document.getElementById('next');
+STEPS.forEach(function(){ dotsEl.appendChild(document.createElement('i')); });
+function draw(){
+  eqEl.innerHTML = STEPS[i].eq;
+  ntEl.innerHTML = STEPS[i].nt;
+  Array.prototype.forEach.call(dotsEl.children, function(d, j){
+    d.className = j <= i ? 'on' : '';
+  });
+  pv.disabled = (i === 0);
+  nx.disabled = (i === STEPS.length - 1);
+}
+pv.onclick = function(){ if (i > 0) { i--; draw(); } };
+nx.onclick = function(){ if (i < STEPS.length - 1) { i++; draw(); } };
+document.getElementById('rst').onclick = function(){ i = 0; draw(); };
+draw();
+
+/* ---- 04 常数自验算 ---- */
+document.getElementById('vb').onclick = function(){
+  var k = 8.31 / 6.02e23;
+  document.getElementById('vo').innerHTML =
+    '= ' + k.toExponential(2).replace('e-23', '×10⁻²³') +
+    ' J·K⁻¹　≈ k ✓';
+};
+
+/* ---- 08 自测 ---- */
+var Q = [
+  {t:'(A)  <i>pV</i>/<i>m</i>',      ok:false, fb:'不对。pV/m 的量纲不是个数。题目给的 m 是单个分子的质量，属于干扰项。'},
+  {t:'(B)  <i>pV</i>/(<i>kT</i>)',   ok:true,  fb:'正确！由 p = nkT 得 n = p/(kT)，再由 N = nV 得 N = pV/(kT)。'},
+  {t:'(C)  <i>pV</i>/(<i>RT</i>)',   ok:false, fb:'这是物质的量（多少 mol），不是分子个数。要得到个数还得再乘 Nₐ —— 记住：R 配摩尔，k 配分子。'},
+  {t:'(D)  <i>pV</i>/(<i>mT</i>)',   ok:false, fb:'不对。单个分子质量 m 与分子个数无直接关系，这里把 m 和 k 的角色搞混了。'}
+];
+var box = document.getElementById('opts'), fb = document.getElementById('fb');
+Q.forEach(function(o){
+  var b = document.createElement('button');
+  b.className = 'opt'; b.innerHTML = o.t;
+  b.onclick = function(){
+    Array.prototype.forEach.call(box.children, function(c){ c.className = 'opt'; });
+    b.className = 'opt ' + (o.ok ? 'ok' : 'no');
+    fb.className = 'fb show ' + (o.ok ? 'good' : 'bad');
+    fb.innerHTML = o.fb;
+  };
+  box.appendChild(b);
+});
+</script>
+</div>
+</body>
+</html>

@@ -1,0 +1,866 @@
+                   Massachusetts Institute of Technology
+         Department of Electrical Engineering and Computer Science
+                   6.061 Introduction to Power Systems
+                           Class Notes Chapter 4
+                Introduction To Symmetrical Components ∗
+                                         J.L. Kirtley Jr.
+
+
+
+
+1        Introduction
+Installment 3 of these notes dealt primarily with networks that are balanced, in which the three
+voltages (and three currents) are identical but for exact 120◦ phase shifts. Unbalanced conditions
+may arise from unequal voltage sources or loads. It is possible to analyze some simple types
+of unbalanced networks using straightforward solution techniques and wye-delta transformations.
+However, power networks can be come quite complex and many situations would be very diﬃcult
+to handle using ordinary network analysis. For this reason, a technique which has come to be called
+symmetrical components has been developed.
+    Symmetrical components, in addition to being a powerful analytical tool, is also conceptually
+useful. The symmetrical components themselves, which are obtained from a transformation of the
+ordinary line voltages and currents, are useful in their own right. Symmetrical components have
+become accepted as one way of describing the properties of many types of network elements such
+as transmission lines, motors and generators.
+
+
+2        The Symmetrical Component Transformation
+The basis for this analytical technique is a transformation of the three voltages and three currents
+into a second set of voltages and currents. This second set is known as the symmetrical components.
+    Working in complex amplitudes:
+                                                �        �
+                                     va = Re V a ejωt                                            (1)
+                                                             2π
+                                                �               �
+                                     vb = Re V b ej(ωt− 3 )                                      (2)
+                                                     j(ωt+ 23π )
+                                                �                  �
+                                     vc = Re V c e                                               (3)
+    ∗
+        c
+        �2003 James L. Kirtley Jr.
+
+
+
+
+                                                 1
+   The transformation is deﬁned as:
+                                ⎡      ⎤            ⎡            ⎤⎡       ⎤
+                                  V1        1 a a2     Va
+                                         1⎢
+                                ⎣ V 2 ⎦ = ⎣ 1 a2 a ⎦ ⎣ V b ⎦                                      (4)
+                                ⎢     ⎥            ⎥⎢      ⎥
+                                         3
+                                  V0        1 1 1      Vc
+
+   where the complex number a is:
+                                                                     √
+                                                   j 2π           1    3
+                                 a            =e      3        =− +j                              (5)
+                                                                  2  √2
+                                              4π          2π      1    3
+                                a2 = ej 3 = e−j 3              =− −j                              (6)
+                                                                  2   2
+                                a3                             =1                                 (7)
+
+    This transformation may be used for both voltage and current, and works for variables in
+ordinary form as well as variables that have been normalized and are in per-unit form. The inverse
+of this transformation is:
+                                 ⎡        ⎤        ⎡             ⎤⎡       ⎤
+                                   Va        1 1 1      V1
+                                 ⎣ V b ⎦ = ⎣ a2 a 1 ⎦ ⎣ V 2 ⎦                                     (8)
+                                 ⎢     ⎥ ⎢          ⎥⎢      ⎥
+                                   Vc        a a2 1     V0
+   The three component variables V 1 , V 2 , V 0 are called, respectively, positive sequence, negative
+sequence and zero sequence. They are called symmetrical components because, taken separately,
+they transform into symmetrical sets of voltages. The properties of these components can be
+demonstrated by tranforming each one back into phase variables.
+   Consider ﬁrst the positive sequence component taken by itself:
+
+                                                   V1 = V                                         (9)
+                                                   V2 = 0                                        (10)
+                                                   V0 = 0                                        (11)
+
+yields:
+
+                               Va =V               or     va = V cos ωt                          (12)
+                                                                          2π
+                             V b = a2 V            or     vb = V cos(ωt −    )                   (13)
+                                                                           3
+                                                                          2π
+                              V c = aV             or     vc = V cos(ωt +    )                   (14)
+                                                                           3
+   This is the familiar balanced set of voltages: Phase b lags phase a by 120◦ , phase c lags phase
+b and phase a lags phase c.
+   The same transformation carried out on a negative sequence voltage:
+
+                                                   V1 = 0                                        (15)
+                                                   V2 = V                                        (16)
+                                                   V0 = 0                                        (17)
+
+
+                                                          2
+yields:
+
+                                          Va =V           or        va = V cos ωt                    (18)
+                                                                                    2π
+                                         V b = aV         or        vb = V cos(ωt +    )             (19)
+                                                                                     3
+                                                                                    2π
+                                        V c = a2 V        or        vc = V cos(ωt −    )             (20)
+                                                                                     3
+   This is called negative sequence because the sequence of voltages is reversed: phase b now leads
+phase a rather than lagging. Note that the negative sequence set is still balanced in the sense
+that the phase components still have the same magnitude and are separated by 120◦ . The only
+diﬀerence between positive and negative sequence is the phase rotation. This is shown in Figure 1.
+             Vc                                                          Vb
+                  �                                                           �
+                   �                                                           �
+                    �                                                              �
+                        �                                                           �
+                            �                        V                                  �       V
+                                �                    �a                                     �   �a
+                                �                                                           �
+                            �                                                           �
+                        �                                                           �
+                  �                                                                �
+                 �                                                            �
+             Vb �                                                        Vc �
+                  Positive Sequence                                        Negative Sequence
+
+                                    Figure 1: Phasor Diagram: Three Phase Voltages
+
+   The third symmetrical component is zero sequence. If:
+
+
+                                                          V1 = 0                                     (21)
+                                                          V2 = 0                                     (22)
+                                                          V0 = V                                     (23)
+
+Then:
+
+                                            Va =V              or       va = V cos ωt                (24)
+                                             Vb =V             or       vb = V cos ωt                (25)
+                                             Vc =V             or       vc = V cos ωt                (26)
+
+That is, all three phases are varying together.
+    Positive and negative sequence sets contain those parts of the three-phase excitation that rep­
+resent balanced normal and reverse phase sequence. Zero sequence is required to make up the
+diﬀerence between the total phase variables and the two rotating components.
+    The great utility of symmetrical components is that, for most types of network elements, the
+symmetrical components are independent of each other. In particular, balanced impedances and ro­
+tating machines will draw only positive sequence currents in response to positive sequence voltages.
+It is thus possible to describe a network in terms of sub-networks, one for each of the symmetrical
+
+                                                                    3
+components. These are called sequence networks. A completely balanced network will have three
+entirely separate sequence networks. If a network is unbalanced at a particular spot, the sequence
+networks will be interconnected at that spot. The key to use of symmetrical components in handling
+unbalanced situations is in learning how to formulate those interconnections.
+
+
+3    Sequence Impedances
+Many diﬀerent types of network elements exhibit diﬀerent behavior to the diﬀerent symmetrical
+components. For example, as we will see shortly, transmission lines have one impedance for positive
+and negative sequence, but an entirely diﬀerent impedance to zero sequence. Rotating machines
+have diﬀerent impedances to all three
+
+
+
+
+                           Positive Sequence         Negative Sequence
+
+
+
+
+                    Figure 2: Sequence Connections For A Line-To-Line Fault
+
+    sequences.
+    To illustrate the independence of symmetrical components in balanced networks, consider the
+transmission line illustrated back in Figure 20 of Installment 3 of these notes. The expressions for
+voltage drop in the lines may be written as a single vector expression:
+
+                                     V ph1 − V ph2 = jωLph I ph                                (27)
+
+where                                            ⎡       ⎤
+                                                   Va
+                                          V ph = ⎣ V b ⎦                                       (28)
+                                                 ⎢     ⎥
+                                                   Vc
+                                                 ⎡       ⎤
+                                                    Ia
+                                           I ph = ⎣ I b ⎦                                      (29)
+                                                  ⎢     ⎥
+                                                    Ic
+                                            ⎡                ⎤
+                                              L      M   M
+                                      Lph = ⎣ M      L   M ⎦                                   (30)
+                                            ⎢              ⎥
+                                              M      M   L
+Note that the symmetrical component transformation (4) may be written in compact form:
+
+                                            V s = TV p                                         (31)
+
+
+                                                 4
+where                                           ⎡               ⎤
+                                                1 a a2
+                                             1⎢
+                                          T = ⎣ 1 a2 a ⎦                                          (32)
+                                                       ⎥
+                                             3
+                                                1 1 1
+and V s is the vector of sequence voltages:
+                                                    ⎡     ⎤
+                                                    V1
+                                              Vs =⎣ V2 ⎦                                          (33)
+                                                  ⎢    ⎥
+                                                    V0
+   Rewriting (27) using the inverse of (31):
+                                 T −1 V s1 − T −1 V s2 = jωLph T −1 I s                           (34)
+Then transforming to get sequence voltages:
+                                     V s1 − V s2 = jωT Lph T −1 I s                               (35)
+   The sequence inductance matrix is deﬁned by carrying out the operation indicated:
+                                             Ls = T Lph T −1                                      (36)
+which is:                             ⎡                                   ⎤
+                                       L−M           0            0
+                                Ls = ⎣  0           L−M           0                               (37)
+                                     ⎢                                ⎥
+                                                                      ⎦
+                                        0            0         L + 2M
+Thus the coupled set of expressions which described the transmission line in phase variables becomes
+an uncoupled set of expressions in the symmetrical components:
+                                   V 11 − V 12 = jω(L − M )I 1                                    (38)
+                                   V 21 − V 22 = jω(L − M )I 2                                    (39)
+                                   V 01 − V 02 = jω(L + 2M )I 0                                   (40)
+The positive, negative and zero sequence impedances of the balanced transmission line are then:
+                                     Z 1 = Z 2 = jω(L − M )                                       (41)
+                                     Z0             = jω(L + 2M )                                 (42)
+So, in analysis of networks with transmission lines, it is now possible to replace the lines with three
+independent, single- phase networks.
+    Consider next a balanced three-phase load with its neutral connected to ground through an
+impedance as shown in Figure 3.
+    The symmetrical component voltage-current relationship for this network is found simply, by
+assuming positive, negative and zero sequence currents and ﬁnding the corresponding voltages. If
+this is done, it is found that the symmetrical components are independent, and that the voltage-
+current relationships are:
+                                          V 1 = ZI 1                                              (43)
+                                          V 2 = ZI 2                                              (44)
+                                          V 0 = (Z + 3Z g )I 0                                    (45)
+
+
+                                                    5
+                                                a
+
+
+                                                Z
+                                                                Z
+                                                                    g
+
+
+                                        Z           Z
+                               c                            b
+
+                          Figure 3: Balanced Load With Neutral Impedance
+
+
+4    Unbalanced Sources
+Consider the network shown in Figure 4. A balanced three-phase resistor is fed by a balanced
+line (with mutual coupling between phases). Assume that only one phase of the voltage source is
+working, so that:
+
+                                            Va = V                                          (46)
+                                            Vb = 0                                          (47)
+                                            Vc = 0                                          (48)
+
+The objective of this example is to ﬁnd currents in the three phases.
+
+
+                               L
+                 +
+                     Va        L            M                           R
+        Vc -   -                                                             R
+       +     -                 L                        M       M
+               Vb +                                                     R
+
+                     Figure 4: Balanced Load, Balanced Line, Unbalanced Source
+
+   To start, note that the unbalanced voltage source has the following set of symmetrical compo­
+nents:
+                                                        V
+                                            V1 =                                            (49)
+                                                        3
+                                                        V
+                                            V2 =                                            (50)
+                                                        3
+                                                        V
+                                            V0 =                                            (51)
+                                                        3
+
+
+                                                    6
+      Next, the network facing the source consists of the line, with impedances:
+
+                                          Z 1 = jω(L − M )                                  (52)
+                                          Z 2 = jω(L − M )                                  (53)
+                                          Z 0 = jω(L + 2M )                                 (54)
+
+and the three- phase resistor has impedances:
+
+                                               Z1 = R                                       (55)
+                                               Z2 = R                                       (56)
+                                               Z0 = ∞                                       (57)
+
+    Note that the impedance to zero sequence is inﬁnite because the neutral is not connected back
+to the neutral of the voltage source. Thus the sum of line currents must always be zero and this
+in turn precludes any zero sequence current. The problem is thus described by the networks which
+appear in Figure 5.
+                 jω(L − M )               jω(L − M )               jω(L + 2M ) R
+                   ∩∩∩∩                     ∩∩∩∩                      ∩∩∩∩ ∧∨∧∨∧
+                ��                        ��                       ��
+                  <>
+                  +                        +<>                      +
+                  <> R  V                      V
+                                            <> R                        V
+                ��<     3
+                                          ��<  3
+                                                                   ��
+                                                                    3
+                  −                        −                        −
+
+
+                      Positive             Negative                         Zero
+
+
+
+
+                                     Figure 5: Sequence Networks
+
+      Currents are:
+                                                   V
+                                     I1 =
+                                            3(jω(L − M ) + R)
+                                                   V
+                                     I2   =
+                                            3(jω(L − M ) + R)
+                                     I0   = 0
+
+      Phase currents may now be re-assembled:
+
+                                       Ia = I1 + I2 + I0
+                                       I b = a2 I 1 + aI 2 + I 0
+                                       I c = aI 1 + a2 I 2 + I 0
+
+or:
+                                                       2V
+                                     Ia =
+                                               3(jω(L − M ) + R)
+                                                   (a2 + a)V
+                                      Ib =
+                                               3(jω(L − M ) + R)
+
+                                                   7
+                                                   −V
+                                        =
+                                            3(jω(L − M ) + R)
+                                                (a + a2 )V
+                                   Ic =
+                                            3(jω(L − M ) + R)
+                                                   −V
+                                        =
+                                            3(jω(L − M ) + R)
+(Note that we have used a2 + a = −1).
+
+
+5    Rotating Machines
+Some network elements are more readily represented by sequence networks than by ordinary phase
+networks. This is the case, for example, for synchronous machines. synchronous motors and
+generators produce a positive sequence internal voltage and have terminal impedance. For reasons
+which are beyond the scope of these notes, the impedance to positive sequence currents is not the
+same as the impedance to negative or to zero sequence currents. A phase-by-phase representation
+will not, in many situations, be adequate, but a sequence network representation will. Such a
+representation is three Thevenin equivalent circuits, as shown in Figure 6
+                     jX1 �I1                  jX2 �I2                      I0
+                                                                       jX0 �
+                    ∩∩∩∩                     ∩∩∩∩                     ∩∩∩∩
+                  ��+                              +                       +
+                  +
+                      E1 V 1                      V2                       V0
+                  ��
+                  −
+                          −                        −                       −
+                   Positive                 Negative                  Zero
+
+
+
+
+                   Figure 6: Sequence Networks For A Synchronous Machine
+
+
+
+6    Transformers
+Transformers provide some interesting features in setting up sequence networks. The ﬁrst of these
+arises from the fact that wye-delta or delta-wye transformer connections produce phase shifts from
+primary to secondary. Depending on connection, this phase shift may be either plus or minus 30◦
+from primary to secondary for positive sequence voltages and currents. It is straightforward to
+show that negative sequence shifts in the opposite direction from positive. Thus if the connection
+advances positive sequence across the transformer, it retards negative sequence. This does not
+turn out to aﬀect the setting up of sequence networks, but does aﬀect the re-construction of phase
+currents and voltages.
+    A second important feature of transformers arises because delta and ungrounded wye connec­
+tions are open circuits to zero sequence at their terminals. A delta connected winding, on the
+other hand, will provide a short circuit to zero sequence currents induced from a wye connected
+winding. Thus the zero sequence network of a transformer may take one of several forms. Figures 7
+through 9 show the zero sequence networks for various transformer connections.
+
+                                                8
+                                                       Xl
+                                                      ∩∩∩∩
+
+
+
+
+          Figure 7: Zero Sequence Network: Wye-Wye Connection, Both Sides Grounded
+
+
+
+                                                   ⊃
+                                                   ⊃ Xl
+                                                   ⊃
+                                                   ⊃
+
+
+
+
+       Figure 8: Zero Sequence Network: Wye-Delta Connection, Wye Side (Left) Grounded
+
+
+7     Unbalanced Faults
+A very common application of symmetrical components is in calculating currents arising from
+unblanced short circuits. For three-phase systems, the possible unbalanced faults are:
+
+    1. Single line-ground,
+
+    2. Double line-ground,
+
+    3. Line-line.
+
+These are considered separately.
+
+7.1    Single Line-To-Ground Fault
+The situation is as shown in Figure 10
+   The system in this case consists of networks connected to the line on which the fault occurs.
+The point of fault itself consists of a set of terminals (which we might call “a,b,c”). The fault sets,
+
+
+
+
+       Figure 9: Zero Sequence Network: Wye-Delta Connection, Ungrounded or Delta-Delta
+
+
+
+                                                  9
+                                                 Point Of Fault
+                                                   �
+                                                 ��
+
+                     Network                                          Network
+
+
+
+
+                 Figure 10: Schematic Picture Of A Single Line-To-Ground Fault
+
+at this point on the system:
+                                            Va = 0
+                                             Ib = 0
+                                             Ic = 0
+   Now: using the inverse of the symmetrical component transformation, we see that:
+                                        V1+V2+V0 =0                                            (58)
+And using the transformation itself:
+                                                      1
+                                       I1 = I2 = I0 = Ia                                   (59)
+                                                      3
+   Together, these two expressions describe the sequence network connection shown in Figure 11.
+This connection has all three sequence networks connected in series.
+
+7.2   Double Line-To-Ground Fault
+If the fault involves phases b, c, and ground, the “terminal” relationship at the point of the fault
+is:
+
+
+                                             Vb = 0
+                                            Vc = 0
+                                             Ia = 0
+   Then, using the sequence transformation:
+                                               1
+                                   V1 =V2 =V0 = Va
+                                               3
+   Combining the inverse transformation:
+                                       Ia = I1 + I2 + I0 = 0
+   These describe a situation in which all three sequence networks are connected in parallel, as
+shown in Figure 12.
+
+                                                10
+                              I
+                                  1      +
+                        Positive
+                                         V1
+                       Sequence
+                                         -
+
+                                 I
+                                     2
+                                 +
+                       Negative
+                                V
+                       Sequence 2
+                                -
+
+                                 I
+                                     0
+                                         +
+                        Zero    V0
+                       Sequence
+                                -
+
+
+
+              Figure 11: Sequence Connection For A Single-Line-To-Ground Fault
+
+
+                             I                              I                 I
+                                 1                              2                 0
+                                         +                          +                 +
+                    Positive                       Negative              Zero
+                                         V1                 V2                        V0
+                   Sequence                        Sequence             Sequence
+                                         -                  -                         -
+
+
+             Figure 12: Sequence Connection For A Double-Line-To-Ground Fault
+
+7.3   Line-Line Fault
+If phases b and c are shorted together but not grounded,
+
+                                                  Vb = Vc
+                                                  I b = −I c
+                                                  Ia = 0
+
+   Expressing these in terms of the symmetrical components:
+
+                                              V1 = V2
+                                                   1�       �
+                                                 =    a + a2 V b
+                                                   3
+                                              I0 = Ia + Ib + Ic
+                                                 = 0
+                                              Ia = I1 + I2
+
+                                                       11
+                                                 = 0
+
+    These expressions describe a parallel connection of the positive and negative sequence networks,
+as shown in Figure 13.
+
+
+                                         I                                   I
+                                             1                                   2
+                                                  +                                  +
+                                 Positive                     Negative
+                                                  V1                                 V2
+                                Sequence                      Sequence
+                                                  -                                  -
+
+
+                    Figure 13: Sequence Connection For A Line-To-Line Fault
+
+
+7.4   Example Of Fault Calculations
+In this example, the objective is to determine maximum current through the breaker B due to a
+fault at the location shown in Figure 14. All three types of unbalanced fault, as well as the balanced
+fault are to be considered. This is the sort of calculation that has to be done whenever a line is
+installed or modiﬁed, so that protective relaying can be set properly.
+
+
+                              T1                                                 T2
+                                                        L1           L
+                                                                         2
+
+
+                                                             Fault
+
+                         Figure 14: One-Line Diagram For Example Fault
+
+   Parameters of the system are:
+
+System Base Voltage                                             138 kV
+System Base Power                                               100 MVA
+Transformer T1 Leakage Reactance                                .1 per-unit
+Transformer T2 Leakage Reactance                                .1 per-unit
+Line L1 Positive And Negative Sequence Reactance                j.05 per-unit
+Line L1 Zero Sequence Impedance                                 j.1 per-unit
+Line L2 Positive And Negative Sequence Reactance                j.02 per-unit
+Line L2 Zero Sequence Impedance                                 j.1 per-unit
+
+
+
+                                                       12
+    The fence-like symbols at either end of the ﬁgure represent “inﬁnite buses”, or positive sequence
+voltage sources.
+    The ﬁrst step in this is to ﬁnd the sequence networks. These are shown in Figure 15. Note that
+they are exactly like what we would expect to have drawn for equivalent single phase networks.
+Only the positive sequence network has sources, because the inﬁnite bus supplies only positive
+sequence voltage. The zero sequence network is open at the right hand side because of the delta­
+wye transformer connection there.
+
+
+                                      j.1 I�
+                                           1B j.05         j.02    j.1
+                                     ∩∩∩∩ ∩∩∩∩            ∩∩∩∩    ∩∩∩∩
+                               ��                                    ��
+                                 +                                       +
+                                      1           Fault                      1
+                               ��                                    ��
+                                 −                                       −
+
+
+                                           Positive Sequence
+                                      j.1 I�
+                                           1B j.05    j.02   j.1
+                                     ∩∩∩∩ ∩∩∩∩ ∩∩∩∩ ∩∩∩∩
+
+                                                  Fault
+
+                                           Negative Sequence
+                                      j.1 I�
+                                           0B j.1     j.1
+                                     ∩∩∩∩ ∩∩∩∩ ∩∩∩∩
+
+                                                  Fault
+
+                                              Zero Sequence
+
+
+
+
+                                     Figure 15: Sequence Networks
+
+
+7.4.1   Symmetrical Fault
+For a symmetrical (three-phase) fault, only the positive sequence network is involved. The fault
+shorts the network at its position, so that the current is:
+                                              1
+                                     i1 =        = −j6.67per − unit
+                                            j.15
+
+7.4.2   Single Line-Ground Fault
+For this situation, the three networks are in series and the situation is as shown in Figure 16
+   The current i shown in Figure 16 is a total current, and is given by:
+                                                 1
+                                 i=                           = −j3.0
+                                       2 × (j.15||j.12) + j.2
+
+                                                     13
+                                            i
+                                            �
+
+
+
+                                                 ⊃        ⊃
+                                            i1B �⊃        ⊃ j.12
+                                                 ⊃ j.15   ⊃
+                                                 ⊃        ⊃
+
+
+                                  ��
+                                    +    ⊃                ⊃
+                                    i2B �⊃
+                                        1⊃ j.15
+                                                          ⊃ j.12
+                                                          ⊃
+                                  ��
+                                    −
+                                         ⊃                ⊃
+
+
+                                                 ⊃
+                                            i0B �⊃
+                                                 ⊃ j.2
+                                                 ⊃
+
+
+
+
+                  Figure 16: Completed Network For Single Line-Ground Fault
+
+   Then the sequence currents at the breaker are:
+
+                                     i1B = i2B
+                                                     j.12
+                                            = i×
+                                                 j.12 + j.15
+                                            = −j1.33
+                                     i0B = i
+                                            = −j3.0
+
+   The phase currents are re-constructed using:
+
+                                    ia = i1B + i2B + i0B
+                                    ib = a2 i1B + ai2B + i0B
+                                    ic = ai1B + a2 i2B + i0B
+
+   These are:
+
+                                    ia = −j5.66       per-unit
+                                     ib = −j1.67      per-unit
+                                     ic = −j1.67      per-unit
+
+7.4.3   Double Line-Ground Fault
+For the double line-ground fault, the networks are in parallel, as shown in Figure 17.
+
+                                                14
+                 ⊃         ⊃                 ⊃        ⊃               ⊃
+            i1B �⊃
+                 ⊃ j.15
+                           ⊃ j.12
+                           ⊃            i2B �⊃
+                                             ⊃ j.15
+                                                      ⊃ j.12
+                                                      ⊃          i0B �⊃
+                                                                      ⊃ j.2
+                 ⊃         ⊃                 ⊃        ⊃               ⊃
+                   ��
+                     +
+                   1
+              i � ��
+                     −
+
+
+
+
+              Figure 17: Completed Network For Double Line-Ground Fault
+
+To start, ﬁnd the source current i:
+
+                                                   1
+                              i =
+                                      j(.15||.12) + j(.15||.12||.2)
+                                    = −j8.57
+Then the sequence currents at the breaker are:
+
+                                                    j.12
+                                 i1B = i ×
+                                                j.12 + j.15
+                                        =   −j3.81
+                                                      j.12||j.2
+                                 i2B =      −i ×
+                                                  j.12||j.2 + j.15
+                                        =   j2.86
+                                                   j.12||j.15
+                                 i0B =      i×
+                                                j.2 + j.12||j.15
+                                        =   j2.14
+Reconstructed phase currents are:
+
+
+                          ia = j1.19
+                                                         √
+                                          1                3
+                          ib =      i0B − (i1B + i2B ) −     j(i1B − i2B )
+                                          2               2
+                             =      j2.67 − 5.87
+                                                         √
+                                          1                3
+                          ic =      i0B − (i1B + i2B ) +     j(i1B − i2B )
+                                          2              2
+                             =      j2.67 + 5.87
+                         |ia | = 1.19 per-unit
+                         |ib | = 6.43 per-unit
+                         |ic | = 6.43 per-unit
+
+                                                 15
+7.4.4   Line-Line Fault
+The situation is even easier here, as shown in Figure 18
+
+
+
+
+                                   ⊃        ⊃                   ⊃        ⊃
+                              i1B �⊃
+                                   ⊃ j.15
+                                            ⊃ j.12
+                                            ⊃              i2B �⊃
+                                                                ⊃ j.15
+                                                                         ⊃ j.12
+                                                                         ⊃
+                                   ⊃        ⊃                   ⊃        ⊃
+                                    ��
+                                      +
+                                            1
+                                i � ��
+                                      −
+
+
+
+
+                         Figure 18: Completed Network For Line-Line Fault
+
+   The source current i is:
+
+                                                         1
+                                          i =
+                                                  2 × j(.15||.12)
+                                                = −j7.50
+
+   and then:
+
+
+                                          i1B = −i2B
+                                                      j.12
+                                              = i
+                                                  j.12 + j.15
+                                              = −j3.33
+
+   Phase currents are:
+
+
+                               ia = 0
+                                                        √
+                                        1                 3
+                                ib = − (i1B + i2B ) − j     (i − i2B )
+                                        2                2 1B
+                              |ib | = 5.77 per-unit
+                              |ic | = 5.77 per-unit
+
+7.4.5   Conversion To Amperes
+Base current is:
+                                              PB
+                                       IB = √       = 418.4A
+                                             3VBl−l
+   Then current amplitudes are, in Amperes, RMS:
+
+                                                      16
+                             Phase A Phase B    Phase C
+Three-Phase Fault            2791    2791       2791
+Single Line-Ground, φa       2368    699        699
+Double Line-Ground, φb ,φc   498     2690       2690
+Line-Line,φb ,φc             0       2414       2414
+
+
+
+
+                                               17
+MIT OpenCourseWare
+http://ocw.mit.edu
+
+
+
+
+6.061 / 6.690 Introduction to Electric Power Systems
+Spring 2011
+
+
+
+
+For information about citing these materials or our Terms of Use, visit: http://ocw.mit.edu/terms.
+
