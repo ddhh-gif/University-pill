@@ -1,0 +1,8 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(python3 声速测量.py)",
+      "Bash(python3 密立根油滴.py)"
+    ]
+  }
+}

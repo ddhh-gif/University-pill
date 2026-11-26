@@ -1,0 +1,17 @@
+# 临时/系统
+.DS_Store
+Thumbs.db
+*.swp
+*~
+.~lock.*#
+~$*
+
+# Python
+__pycache__/
+*.pyc
+
+# 日志
+*.log
+
+# Obsidian 工作区状态
+.obsidian/workspace*
