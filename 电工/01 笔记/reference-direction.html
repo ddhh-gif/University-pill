@@ -1,0 +1,1270 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="color-scheme" content="light">
+<title>参考方向 · 先定方向，再让读数带符号</title>
+<noscript><style>.reveal{opacity:1;transform:none}</style></noscript>
+<style>
+:root{
+  --paper:#F5F2E9;
+  --paper-2:#FCFAF3;
+  --paper-3:#EFEBDD;
+  --ink:#1A2230;
+  --ink-2:#3C485C;
+  --muted:#6C7688;
+  --line:#D7D1C2;
+  --line-2:#E6E1D4;
+  --amber:#CF7A00;
+  --amber-2:#F2A93B;
+  --amber-soft:#FBE7C2;
+  --blue:#2059C9;
+  --blue-2:#3D7BEA;
+  --blue-soft:#DDE7FB;
+  --green:#0B7A4B;
+  --green-soft:#D6EEDF;
+  --red:#BE3A2B;
+  --red-soft:#F7DCD6;
+  --violet:#6B4AD1;
+  --violet-soft:#E6E0FB;
+  --serif:"Noto Serif CJK SC","Noto Serif",Georgia,serif;
+  --sans:"Noto Sans CJK SC","Noto Sans",system-ui,-apple-system,sans-serif;
+  --mono:"Noto Sans Mono CJK SC","DejaVu Sans Mono",ui-monospace,SFMono-Regular,monospace;
+  --shadow:0 1px 0 rgba(26,34,48,.04),0 22px 48px -30px rgba(26,34,48,.45);
+}
+*,*::before,*::after{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{
+  margin:0;
+  font-family:var(--sans);
+  color:var(--ink);
+  line-height:1.68;
+  background-color:var(--paper);
+  background-image:
+    linear-gradient(rgba(26,34,48,.045) 1px,transparent 1px),
+    linear-gradient(90deg,rgba(26,34,48,.045) 1px,transparent 1px),
+    linear-gradient(rgba(26,34,48,.075) 1px,transparent 1px),
+    linear-gradient(90deg,rgba(26,34,48,.075) 1px,transparent 1px);
+  background-size:24px 24px,24px 24px,120px 120px,120px 120px;
+  -webkit-font-smoothing:antialiased;
+  text-rendering:optimizeLegibility;
+}
+img,svg{display:block;max-width:100%}
+button{font:inherit;color:inherit;cursor:pointer}
+a{color:inherit}
+::selection{background:var(--amber-soft);color:var(--ink)}
+:focus-visible{outline:2px solid var(--blue);outline-offset:2px;border-radius:4px}
+
+.wrap{width:min(1180px,92vw);margin:0 auto}
+.section{padding:clamp(54px,7.5vw,104px) 0}
+.eyebrow{font-family:var(--mono);font-size:11px;letter-spacing:.16em;text-transform:uppercase;color:var(--muted);margin:0 0 14px;display:flex;align-items:center;gap:10px}
+.eyebrow::before{content:"";width:26px;height:1px;background:var(--ink);opacity:.35}
+h1,h2,h3{font-family:var(--serif);font-weight:600;line-height:1.14;letter-spacing:-.012em;margin:0}
+h2{font-size:clamp(27px,3.4vw,42px)}
+h3{font-size:20px}
+p{margin:0}
+.hl-mark{background:linear-gradient(transparent 56%,var(--amber-soft) 56%,var(--amber-soft) 94%,transparent 94%);padding:0 .1em}
+.mono{font-family:var(--mono);font-variant-numeric:tabular-nums}
+.hide{display:none!important}
+
+/* ---------- masthead ---------- */
+.mast{padding:16px 0;border-bottom:1px solid var(--line-2)}
+.mast .wrap{display:flex;align-items:center;justify-content:space-between;gap:24px}
+.brand{display:flex;align-items:center;gap:12px;text-decoration:none}
+.brand .mark{width:34px;height:34px;border:1.5px solid var(--ink);border-radius:50%;display:grid;place-items:center;font-family:var(--mono);font-size:17px;line-height:1;background:var(--paper-2)}
+.brand .name{font-family:var(--serif);font-size:16.5px;letter-spacing:.02em;line-height:1.2}
+.brand .sub{font-family:var(--mono);font-size:10px;letter-spacing:.16em;color:var(--muted)}
+.nav{display:flex;gap:22px;font-size:13px}
+.nav a{text-decoration:none;color:var(--ink-2);padding:4px 0;border-bottom:1px solid transparent;transition:border-color .2s,color .2s}
+.nav a:hover{color:var(--ink);border-bottom-color:var(--ink)}
+@media(max-width:900px){.nav{display:none}}
+
+/* ---------- hero ---------- */
+.hero{padding:clamp(44px,6.5vw,92px) 0 clamp(36px,5vw,72px)}
+.hero-grid{display:grid;grid-template-columns:1.02fr .98fr;gap:clamp(28px,5vw,66px);align-items:center}
+@media(max-width:920px){.hero-grid{grid-template-columns:1fr;gap:40px}}
+.hero h1{font-size:clamp(38px,5.3vw,66px);letter-spacing:-.02em}
+.hero h1 .thin{color:var(--ink-2)}
+.lede{font-size:clamp(15px,1.55vw,17.5px);color:var(--ink-2);max-width:50ch;margin:22px 0 26px}
+.chips{display:flex;flex-wrap:wrap;gap:8px;margin:0 0 30px}
+.chip{font-family:var(--mono);font-size:11px;letter-spacing:.05em;color:var(--ink-2);border:1px solid var(--line);background:var(--paper-2);border-radius:999px;padding:5px 11px}
+.cta-row{display:flex;gap:12px;flex-wrap:wrap}
+.btn{display:inline-flex;align-items:center;gap:9px;border-radius:11px;padding:12px 20px;font-size:14px;text-decoration:none;border:1px solid transparent;transition:transform .15s,background .2s,color .2s,box-shadow .2s}
+.btn:active{transform:translateY(1px)}
+.btn.primary{background:var(--ink);color:var(--paper-2);box-shadow:0 12px 24px -16px rgba(26,34,48,.9)}
+.btn.primary:hover{background:#0f1621}
+.btn.ghost{background:var(--paper-2);border-color:var(--line);color:var(--ink)}
+.btn.ghost:hover{border-color:var(--ink);}
+.btn .arw{font-family:var(--mono)}
+
+.hero-card{position:relative;background:var(--paper-2);border:1px solid var(--line);border-radius:18px;padding:20px 20px 16px;box-shadow:var(--shadow);overflow:hidden}
+.hero-card::before{content:"";position:absolute;inset:0;background:radial-gradient(120% 90% at 50% -10%,rgba(32,89,201,.07),transparent 62%);pointer-events:none}
+.hc-head{display:flex;justify-content:space-between;align-items:center;gap:12px;font-family:var(--mono);font-size:11px;letter-spacing:.06em;color:var(--muted)}
+.hc-badge{border:1px solid var(--line);border-radius:999px;padding:3px 10px;color:var(--ink-2);white-space:nowrap;transition:color .25s,border-color .25s}
+.hero-card.is-neg .hc-badge{color:var(--red);border-color:var(--red-soft)}
+.hc-num{position:relative;z-index:2;font-family:var(--mono);font-size:clamp(42px,6.2vw,60px);font-weight:600;line-height:1;letter-spacing:-.03em;margin:18px 0 2px;font-variant-numeric:tabular-nums;transition:color .3s}
+.hc-num.is-neg{color:var(--red)}
+.hc-sub{font-family:var(--mono);font-size:12px;color:var(--muted)}
+.hero-svg{width:100%;height:auto;margin:6px 0 2px}
+.hc-foot{display:flex;justify-content:space-between;align-items:center;gap:14px;border-top:1px dashed var(--line-2);padding-top:12px;margin-top:6px;flex-wrap:wrap}
+.hc-foot .factline{font-size:12.5px;color:var(--ink-2)}
+.hc-foot .factline b{font-family:var(--mono);font-weight:600}
+.flip-btn{font-family:var(--mono);font-size:12px;background:var(--paper);border:1px solid var(--line);border-radius:9px;padding:8px 12px;transition:background .2s,border-color .2s}
+.flip-btn:hover{background:var(--amber-soft);border-color:var(--amber-2)}
+
+/* svg shared */
+.circuit-svg{width:100%;height:auto;overflow:visible}
+.wires path,.wires line{fill:none;stroke:var(--ink);stroke-width:3;stroke-linecap:round;stroke-linejoin:round}
+.wires .thin{stroke-width:2.2}
+.comp{fill:var(--paper-2);stroke:var(--ink);stroke-width:3}
+.flow{fill:none;stroke:var(--amber);stroke-width:7;stroke-linecap:round;stroke-dasharray:.1 24;animation:flow 1.4s linear infinite;opacity:.9}
+.flow-slow{stroke-width:5;stroke-dasharray:.1 30;animation-duration:2.4s;opacity:.55}
+@keyframes flow{to{stroke-dashoffset:-24.1}}
+.lbl{font-family:var(--mono);font-size:15px;fill:var(--ink-2)}
+.lbl.sm{font-size:12.5px}
+.lbl.amber{fill:var(--amber)}
+.lbl.blue{fill:var(--blue)}
+.mark{font-family:var(--mono);font-weight:600;font-size:19px}
+.mark.plus{fill:var(--blue)}
+.mark.minus{fill:var(--blue)}
+.ref-arrow{color:var(--amber);fill:none;stroke:currentColor;stroke-width:3;stroke-linecap:round;stroke-dasharray:7 6;transition:transform .45s cubic-bezier(.4,0,.2,1),color .25s}
+.ref-arrow .head{fill:currentColor;stroke:none}
+.ref-arrow.flip{transform:scaleX(-1);transform-box:fill-box;transform-origin:center}
+.arrow-label{font-family:var(--mono);font-size:12.5px;fill:var(--amber);transition:fill .25s}
+.mismatch .ref-arrow,.hero-card.is-neg #heroArrow{color:var(--red)}
+.circuit-card.mismatch .arrow-label,.hero-card.is-neg .arrow-label{fill:var(--red)}
+.dep path{fill:var(--paper-2);stroke:var(--ink);stroke-width:3;stroke-linejoin:round}
+.dep .dep-arrow{fill:none;stroke:var(--violet);stroke-width:2.6;stroke-linecap:round}
+.dep .dep-arrow-head{fill:var(--violet);stroke:none}
+
+/* ---------- principle cards ---------- */
+.rules-head{max-width:640px;margin-bottom:30px}
+.rules-head p{color:var(--ink-2);margin-top:12px;font-size:15.5px}
+.cards-3{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
+@media(max-width:860px){.cards-3{grid-template-columns:1fr}}
+.pcard{background:var(--paper-2);border:1px solid var(--line);border-radius:16px;padding:20px;display:flex;flex-direction:column;gap:12px;box-shadow:0 1px 0 rgba(26,34,48,.03)}
+.pcard .tag{font-family:var(--mono);font-size:10.5px;letter-spacing:.12em;color:var(--muted);display:flex;justify-content:space-between;align-items:center}
+.pcard .tag .dot{width:7px;height:7px;border-radius:50%;display:inline-block}
+.pcard .dot.a{background:var(--amber)}
+.pcard .dot.b{background:var(--violet)}
+.pcard .dot.c{background:var(--blue)}
+.pcard h3{font-size:19px}
+.pcard p{color:var(--ink-2);font-size:14px}
+.glyph{height:66px;border:1px dashed var(--line);border-radius:10px;background:linear-gradient(180deg,rgba(255,255,255,.45),rgba(0,0,0,.012));display:grid;place-items:center;overflow:hidden;position:relative}
+.glyph-svg{width:100%;height:100%}
+.glyph .flipwrap{transform-box:fill-box;transform-origin:center;animation:refTurn 4.4s cubic-bezier(.4,0,.2,1) infinite}
+@keyframes refTurn{0%,42%{transform:scaleX(1)}52%,92%{transform:scaleX(-1)}100%{transform:scaleX(1)}}
+.crossfade{position:relative;width:96px;height:34px;font-family:var(--mono);font-size:22px;font-weight:600;font-variant-numeric:tabular-nums}
+.crossfade span{position:absolute;inset:0;display:grid;place-items:center}
+.crossfade .p{color:var(--ink);animation:cfA 4.4s ease-in-out infinite}
+.crossfade .n{color:var(--red);animation:cfB 4.4s ease-in-out infinite}
+@keyframes cfA{0%,45%{opacity:1}52%,95%{opacity:0}100%{opacity:1}}
+@keyframes cfB{0%,45%{opacity:0}52%,95%{opacity:1}100%{opacity:0}}
+
+/* ---------- lab ---------- */
+.lab-head{display:flex;justify-content:space-between;align-items:flex-end;gap:32px;margin-bottom:26px;flex-wrap:wrap}
+.lab-head p{color:var(--ink-2);font-size:15px;max-width:52ch;margin-top:10px}
+.lab-grid{display:grid;grid-template-columns:1.06fr .94fr;gap:18px;align-items:stretch}
+@media(max-width:940px){.lab-grid{grid-template-columns:1fr}}
+.card{background:var(--paper-2);border:1px solid var(--line);border-radius:18px;box-shadow:var(--shadow)}
+.circuit-card{padding:16px 16px 12px;display:flex;flex-direction:column;justify-content:space-between;gap:8px;position:relative}
+.circuit-card .badge{position:absolute;top:14px;left:16px;font-family:var(--mono);font-size:10.5px;letter-spacing:.06em;color:var(--muted);border:1px solid var(--line);border-radius:999px;padding:3px 9px;background:var(--paper-2);z-index:2}
+.circuit-card.mismatch .badge{color:var(--red);border-color:var(--red-soft);background:#fff6f3}
+.circuit-card .badge .warn{display:none}
+.circuit-card.mismatch .badge .warn{display:inline}
+.circuit-card .badge .ok{display:inline}
+.circuit-card.mismatch .badge .ok{display:none}
+.lab-svg-wrap{flex:1;display:flex;align-items:center;margin-top:22px}
+.lab-svg{width:100%;height:auto}
+.circuit-foot{display:flex;justify-content:space-between;align-items:center;gap:12px;flex-wrap:wrap;font-size:12.5px;color:var(--muted);border-top:1px dashed var(--line-2);padding-top:10px}
+.circuit-foot b{font-family:var(--mono);color:var(--ink);font-weight:600}
+.panel-card{padding:18px;display:flex;flex-direction:column;gap:15px}
+.ctrl{display:flex;flex-direction:column;gap:7px}
+.ctrl-label{font-family:var(--mono);font-size:11px;letter-spacing:.08em;text-transform:uppercase;color:var(--muted)}
+.seg{display:flex;border:1px solid var(--line);border-radius:10px;overflow:hidden;background:var(--paper)}
+.seg button{flex:1;background:none;border:0;padding:9px 8px;font-size:13px;color:var(--ink-2);transition:background .18s,color .18s;white-space:nowrap}
+.seg button+button{border-left:1px solid var(--line)}
+.seg button.is-on{background:var(--ink);color:var(--paper-2)}
+.seg button:hover:not(.is-on){background:var(--paper-3)}
+.readout{display:flex;flex-direction:column}
+.ro{display:flex;justify-content:space-between;align-items:baseline;gap:14px;padding:9px 0;border-bottom:1px dashed var(--line-2)}
+.ro:first-child{padding-top:0}
+.ro span{font-size:12.5px;color:var(--muted)}
+.ro b{font-family:var(--mono);font-variant-numeric:tabular-nums;font-size:15px;font-weight:600;white-space:nowrap}
+.val-neg{color:var(--red)}
+.pill{font-family:var(--mono);font-size:10.5px;padding:3px 9px;border-radius:999px;font-weight:500;letter-spacing:.02em}
+.pill.assoc{background:var(--green-soft);color:var(--green)}
+.pill.non{background:var(--amber-soft);color:#8a5200}
+.eqbox{font-family:var(--mono);font-size:12.5px;line-height:1.9;background:var(--paper);border:1px solid var(--line-2);border-radius:9px;padding:10px 12px;color:var(--ink-2);overflow-wrap:anywhere}
+.eqbox .hl{color:var(--ink);font-weight:600}
+.eqbox .eq-k{display:block;font-size:10.5px;letter-spacing:.1em;color:var(--muted);margin-bottom:3px}
+.factline{font-size:12.5px;color:var(--muted);background:var(--blue-soft);border-radius:9px;padding:9px 12px;color:#1a3c7a}
+.factline b{font-family:var(--mono);color:#12306a}
+details.note{border:1px solid var(--line-2);border-radius:10px;background:var(--paper)}
+details.note summary{cursor:pointer;list-style:none;padding:11px 13px;font-size:13px;font-weight:500;color:var(--ink);display:flex;justify-content:space-between;gap:10px;align-items:center}
+details.note summary::-webkit-details-marker{display:none}
+details.note summary::after{content:"+";font-family:var(--mono);color:var(--muted)}
+details.note[open] summary::after{content:"−"}
+details.note .note-body{padding:0 13px 13px;font-size:13px;color:var(--ink-2)}
+details.note .note-body p+p{margin-top:9px}
+details.note b{color:var(--ink)}
+
+/* ---------- power ledger ---------- */
+.power-ledger{margin-top:18px;padding:22px;display:flex;flex-direction:column;gap:18px}
+.pl-head{display:flex;justify-content:space-between;align-items:flex-end;gap:24px;flex-wrap:wrap}
+.pl-head h3{font-size:clamp(19px,2.2vw,26px)}
+.nw{white-space:nowrap}
+.pl-intro{max-width:48ch;font-size:13.5px;color:var(--ink-2)}
+.pl-intro b{color:var(--ink)}
+.pl-rows{display:grid;grid-template-columns:repeat(3,1fr);gap:12px}
+@media(max-width:820px){.pl-rows{grid-template-columns:1fr}}
+.pl-item{background:var(--paper);border:1px solid var(--line-2);border-radius:12px;padding:14px 14px 14px 18px;display:flex;flex-direction:column;gap:6px;position:relative;overflow:hidden}
+.pl-item::before{content:"";position:absolute;left:0;top:0;bottom:0;width:4px;background:var(--line)}
+.pl-item.out::before{background:var(--amber-2)}
+.pl-item.in::before{background:#2f9e6b}
+.pl-top{display:flex;justify-content:space-between;align-items:center;gap:8px}
+.pl-name{font-family:var(--mono);font-size:12px;letter-spacing:.03em;color:var(--ink-2)}
+.pl-tag{font-family:var(--mono);font-size:10px;padding:2px 8px;border-radius:999px;letter-spacing:.04em;white-space:nowrap}
+.pl-tag.in{background:var(--green-soft);color:var(--green)}
+.pl-tag.out{background:var(--amber-soft);color:#8a5200}
+.pl-val{font-family:var(--mono);font-size:clamp(22px,2.5vw,30px);font-weight:600;line-height:1.15;font-variant-numeric:tabular-nums}
+.pl-val.pos{color:var(--green)}
+.pl-val.neg{color:var(--red)}
+.pl-formula{font-family:var(--mono);font-size:11.5px;color:var(--muted);line-height:1.55;overflow-wrap:anywhere}
+.pl-note{font-size:11.5px;color:var(--ink-2);line-height:1.55}
+.pl-bars{display:flex;flex-direction:column;gap:8px;border-top:1px dashed var(--line-2);padding-top:16px}
+.pl-bar-row{display:grid;grid-template-columns:44px 1fr;gap:12px;align-items:center}
+.pl-bar-label{font-family:var(--mono);font-size:10.5px;letter-spacing:.06em;color:var(--muted);text-align:right}
+.pl-track{height:32px;border-radius:8px;background:var(--paper-3);display:flex;overflow:hidden;gap:2px}
+.pl-fill{display:flex;align-items:center;justify-content:center;font-family:var(--mono);font-size:11px;color:#fff;font-variant-numeric:tabular-nums;white-space:nowrap;overflow:hidden;border-radius:6px}
+.pl-fill.out{flex:1 1 auto;background:linear-gradient(90deg,#e8a23c,#cf7a00)}
+.pl-fill.in1{flex:8 1 0;background:linear-gradient(90deg,#17935f,#0b7a4b)}
+.pl-fill.in2{flex:16 1 0;background:linear-gradient(90deg,#2fa873,#17895a)}
+.pl-rule{border-left:3px solid var(--blue);background:var(--blue-soft);border-radius:0 10px 10px 0;padding:12px 16px;font-size:13px;color:#1a3c7a}
+.pl-rule b{color:#12306a}
+
+/* ---------- loop arrow ---------- */
+.loop-grid{display:grid;grid-template-columns:1fr .92fr;gap:26px;align-items:center}
+@media(max-width:940px){.loop-grid{grid-template-columns:1fr}}
+.loop-card{padding:14px;position:relative}
+.loop-card .badge{position:absolute;top:14px;left:16px;font-family:var(--mono);font-size:10.5px;letter-spacing:.06em;color:var(--violet);border:1px solid var(--violet-soft);border-radius:999px;padding:3px 9px;background:var(--paper-2);z-index:2}
+.loop-svg{width:100%;height:auto;margin-top:24px}
+.loop-card .ctrl{margin-top:10px}
+.loop-arrow{fill:none;stroke:var(--violet);stroke-width:2.6;stroke-linecap:round;stroke-dasharray:6 6;animation:loopFlow 1.3s linear infinite;transition:transform .5s cubic-bezier(.4,0,.2,1)}
+.loop-arrow.flip{transform:scaleX(-1);transform-box:fill-box;transform-origin:center}
+@keyframes loopFlow{to{stroke-dashoffset:-12}}
+.loop-arrow-label{font-family:var(--mono);font-size:12px;fill:var(--violet)}
+.loop-copy .body{color:var(--ink-2);font-size:15px}
+.loop-copy .body p+p{margin-top:10px}
+.loop-copy b{color:var(--ink)}
+.loop-rules{display:flex;flex-direction:column;gap:9px;margin:16px 0}
+.lr{display:grid;grid-template-columns:58px 1fr;gap:12px;align-items:start;background:var(--paper);border:1px solid var(--line-2);border-radius:9px;padding:10px 12px}
+.lr .tag{font-family:var(--mono);font-size:10px;letter-spacing:.08em;color:var(--muted);padding-top:3px}
+.lr p{font-size:13px;color:var(--ink-2)}
+.lr b{color:var(--ink)}
+.inline-link{color:var(--blue);text-decoration:none;border-bottom:1px solid rgba(32,89,201,.3);font-size:12.5px}
+.inline-link:hover{border-bottom-color:var(--blue)}
+
+/* ---------- conventions ---------- */
+.conv-grid{display:grid;grid-template-columns:.92fr 1.08fr;gap:26px;align-items:start;margin-top:26px}
+@media(max-width:940px){.conv-grid{grid-template-columns:1fr}}
+.conv-copy h3{font-size:clamp(19px,2.2vw,24px);margin-bottom:10px}
+.conv-copy p{color:var(--ink-2);font-size:14.5px}
+.conv-copy p+p{margin-top:10px}
+.conv-copy b{color:var(--ink)}
+.conv-note{margin-top:14px;border-left:3px solid var(--blue);background:var(--blue-soft);border-radius:0 9px 9px 0;padding:10px 14px;font-size:13px;color:#1a3c7a}
+.table-wrap{overflow-x:auto;border:1px solid var(--line);border-radius:12px;background:var(--paper-2)}
+.table-wrap::-webkit-scrollbar{height:8px}
+.table-wrap::-webkit-scrollbar-thumb{background:var(--line);border-radius:4px}
+.ctable{width:100%;border-collapse:collapse;font-size:12.5px;min-width:520px}
+.ctable caption{caption-side:top;text-align:left;padding:12px 14px;font-family:var(--mono);font-size:10.5px;letter-spacing:.06em;color:var(--muted);border-bottom:1px solid var(--line-2);white-space:normal}
+@media(max-width:600px){.ctable caption::after{content:" · 左右滑动 →";color:var(--blue)}}
+.ctable th,.ctable td{padding:9px 12px;border-bottom:1px solid var(--line-2);text-align:left;white-space:nowrap}
+.ctable th{font-family:var(--mono);font-size:10px;letter-spacing:.05em;color:var(--muted);font-weight:500;background:var(--paper)}
+.ctable td{font-variant-numeric:tabular-nums}
+.ctable tbody tr:last-child td{border-bottom:0}
+.ctable .num{font-family:var(--mono)}
+.ctable .ok{color:var(--green);font-weight:600;font-family:var(--mono)}
+.ctable .assoc{color:var(--green)}
+.ctable .non{color:#8a5200}
+.ctable th.okcol{color:var(--green)}
+.ctable tbody tr:hover td{background:rgba(26,34,48,.025)}
+.free-fixed{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-top:18px}
+@media(max-width:820px){.free-fixed{grid-template-columns:1fr}}
+.ff-card{background:var(--paper-2);border:1px solid var(--line);border-radius:16px;padding:20px}
+.ff-card h3{font-size:19px;display:flex;align-items:center;gap:10px}
+.ff-card h3::before{content:"";width:9px;height:9px;border-radius:50%;flex:none}
+.ff-card.free h3::before{background:var(--green)}
+.ff-card.fixed h3::before{background:var(--amber-2)}
+.ff-card ul{list-style:none;padding:0;margin:14px 0 0;display:flex;flex-direction:column;gap:11px}
+.ff-card li{display:flex;flex-direction:column;gap:2px;padding-left:17px;position:relative}
+.ff-card li::before{content:"✓";position:absolute;left:0;top:0;font-family:var(--mono);font-size:11px;color:var(--green)}
+.ff-card.fixed li::before{content:"!";color:var(--amber);font-weight:600}
+.ff-card li b{font-size:13.5px;color:var(--ink)}
+.ff-card li span{font-size:12.5px;color:var(--muted);line-height:1.5}
+.ff-card > p{margin-top:14px;padding-top:12px;border-top:1px dashed var(--line-2);font-size:12.5px;color:var(--ink-2)}
+.src-polar{display:grid;grid-template-columns:1.02fr .98fr;gap:26px;align-items:center;margin-top:18px;background:var(--paper-2);border:1px solid var(--line);border-radius:16px;padding:22px}
+@media(max-width:900px){.src-polar{grid-template-columns:1fr}}
+.src-polar .eyebrow{margin-bottom:10px}
+.src-polar p{color:var(--ink-2);font-size:13.5px}
+.src-polar p+p{margin-top:10px}
+.src-polar b{color:var(--ink)}
+.src-eq{background:var(--paper);border:1px solid var(--line-2);border-radius:10px;padding:14px}
+.src-line{font-size:12.5px;color:var(--ink-2)}
+.src-line+.src-line{margin-top:10px;padding-top:10px;border-top:1px dashed var(--line-2)}
+.src-line span{display:block;font-family:var(--mono);font-size:10.5px;letter-spacing:.04em;color:var(--muted);margin-bottom:3px}
+.src-line code{font-family:var(--mono);font-size:12.5px;color:var(--ink)}
+.src-foot{margin-top:12px;font-size:12.5px;color:var(--green);font-family:var(--mono)}
+.conv-summary{margin-top:18px;font-size:14px;color:var(--ink-2);border-top:1px dashed var(--line-2);padding-top:16px}
+.conv-summary b{color:var(--ink)}
+
+/* ---------- translator ---------- */
+.trans-grid{display:grid;grid-template-columns:1fr auto 1fr;gap:16px;align-items:stretch;margin-top:28px}
+@media(max-width:820px){.trans-grid{grid-template-columns:1fr;gap:12px}}
+.trans-mid{display:flex;flex-direction:column;justify-content:center;align-items:center;gap:2px;padding:6px}
+.turn-icon{width:54px;height:54px;border-radius:50%;border:1px dashed var(--line);display:grid;place-items:center;color:var(--muted);background:var(--paper-2)}
+.turn-cap{display:block;margin-top:2px;font-family:var(--mono);font-size:10px;letter-spacing:.08em;color:var(--muted);text-align:center}
+.turn-icon svg{animation:spinSlow 6s linear infinite}
+@keyframes spinSlow{to{transform:rotate(360deg)}}
+.trans-card{padding:20px;display:flex;flex-direction:column;gap:10px}
+.trans-card .tag{font-family:var(--mono);font-size:10.5px;letter-spacing:.12em;color:var(--muted)}
+.trans-card .big{font-family:var(--mono);font-size:38px;font-weight:600;line-height:1;letter-spacing:-.03em;font-variant-numeric:tabular-nums}
+.trans-card.ref .big{color:var(--red)}
+.trans-card.act .big{color:var(--green)}
+.trans-card p{font-size:13.5px;color:var(--ink-2)}
+.trans-svg{width:100%;height:auto;margin-top:2px}
+.trans-note{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-top:18px}
+@media(max-width:820px){.trans-note{grid-template-columns:1fr}}
+.tn{display:flex;gap:12px;align-items:flex-start;background:var(--paper-2);border:1px solid var(--line);border-radius:12px;padding:14px}
+.tn .n{font-family:var(--mono);font-size:11px;color:var(--paper-2);background:var(--ink);border-radius:6px;padding:3px 7px;line-height:1.4;flex:none;margin-top:1px}
+.tn p{font-size:13px;color:var(--ink-2)}
+.power-note{margin-top:16px;border-left:3px solid var(--amber-2);background:var(--amber-soft);border-radius:0 10px 10px 0;padding:12px 16px;font-size:13.5px;color:#6d4300}
+.power-note b{font-family:var(--mono)}
+
+/* ---------- origin ---------- */
+.origin-grid{display:grid;grid-template-columns:1.12fr .88fr;gap:26px;align-items:center}
+@media(max-width:940px){.origin-grid{grid-template-columns:1fr}}
+.origin-card{padding:12px;position:relative}
+.origin-svg{width:100%;height:auto}
+.origin-card .badge{position:absolute;top:14px;right:16px;font-family:var(--mono);font-size:10.5px;letter-spacing:.06em;color:var(--muted);border:1px solid var(--line);border-radius:999px;padding:3px 9px;background:var(--paper-2)}
+.origin-copy{padding-right:clamp(0px,1.2vw,18px)}
+.origin-copy .body{color:var(--ink-2);font-size:15px;margin-top:16px}
+.origin-copy .body p+p{margin-top:11px}
+.origin-copy b{color:var(--ink)}
+.kv{font-family:var(--mono);background:var(--paper);border:1px solid var(--line-2);border-radius:6px;padding:1px 6px;font-size:12.5px;color:var(--ink);white-space:nowrap}
+.caution{margin-top:16px;border-left:3px solid var(--violet);background:var(--violet-soft);border-radius:0 10px 10px 0;padding:12px 16px;font-size:13.5px;color:#3b2a7a}
+.caution b{color:#2b1e5c}
+.pol-toggle{margin-top:16px;display:flex;gap:10px;flex-wrap:wrap;align-items:center}
+.origin-cap{margin-top:12px;font-size:12.5px;color:var(--muted);min-height:2.6em}
+.origin-cap b{font-family:var(--mono);color:var(--red)}
+.origin-cap .cap-actual{display:none}
+.origin-panel.show-actual .origin-cap .cap-ref{display:none}
+.origin-panel.show-actual .origin-cap .cap-actual{display:inline}
+.origin-panel.show-actual #u2Actual text{fill:var(--red)}
+.origin-panel.show-actual #u2Actual text.plus{fill:var(--red)}
+.origin-svg .mark.plus,.origin-svg .mark.minus{font-size:18px}
+.origin-svg .ref-arrow{color:var(--amber)}
+
+/* ---------- takeaway ---------- */
+.takeaway{background:var(--ink);color:var(--paper-2);border-radius:22px;padding:clamp(28px,4vw,52px);position:relative;overflow:hidden}
+.takeaway::after{content:"";position:absolute;right:-80px;top:-80px;width:320px;height:320px;border-radius:50%;border:1px solid rgba(252,250,243,.12);pointer-events:none}
+.takeaway .eyebrow{color:rgba(252,250,243,.55)}
+.takeaway .eyebrow::before{background:var(--amber-2);opacity:.9}
+.takeaway h2{color:var(--paper-2)}
+.tk-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:14px;margin-top:28px}
+@media(max-width:760px){.tk-grid{grid-template-columns:1fr}}
+.tk{display:flex;gap:14px;align-items:flex-start;border:1px solid rgba(252,250,243,.14);border-radius:13px;padding:16px;background:rgba(252,250,243,.035)}
+.tk .n{font-family:var(--mono);font-size:11px;color:var(--ink);background:var(--amber-2);border-radius:6px;padding:3px 7px;line-height:1.4;flex:none;margin-top:2px;font-weight:600}
+.tk p{font-size:14px;color:rgba(252,250,243,.86)}
+.tk b{color:var(--paper-2)}
+.tk .m{font-family:var(--mono);color:var(--amber-2)}
+.closing{margin-top:28px;font-family:var(--serif);font-size:clamp(18px,2.4vw,26px);line-height:1.5;color:var(--paper-2);max-width:40ch}
+.closing span{color:var(--amber-2)}
+
+/* ---------- footer ---------- */
+footer{padding:34px 0 54px}
+footer .wrap{display:flex;justify-content:space-between;gap:20px;flex-wrap:wrap;font-size:12px;color:var(--muted);border-top:1px solid var(--line-2);padding-top:18px}
+footer .mono{letter-spacing:.05em}
+
+/* reveal */
+.reveal{opacity:0;transform:translateY(16px);transition:opacity .7s ease,transform .7s cubic-bezier(.2,.75,.2,1)}
+.reveal.is-in{opacity:1;transform:none}
+.reveal.d1{transition-delay:.06s}
+.reveal.d2{transition-delay:.12s}
+.reveal.d3{transition-delay:.18s}
+
+@media (prefers-reduced-motion: reduce){
+  html{scroll-behavior:auto}
+  *,*::before,*::after{animation-duration:.001ms!important;animation-iteration-count:1!important;transition-duration:.001ms!important}
+  .reveal{opacity:1;transform:none}
+}
+</style>
+</head>
+<body>
+
+<header class="mast">
+  <div class="wrap">
+    <a class="brand" href="#top">
+      <span class="mark">±</span>
+      <span>
+        <span class="name">符号实验室</span>
+        <span class="sub">SIGN·LAB / 电路分析</span>
+      </span>
+    </a>
+    <nav class="nav" aria-label="页面导航">
+      <a href="#rules">三条规则</a>
+      <a href="#lab">主例题</a>
+      <a href="#loop">绕行箭头</a>
+      <a href="#conventions">约定清单</a>
+      <a href="#sign">负号翻译</a>
+      <a href="#origin">回到原题</a>
+    </nav>
+  </div>
+</header>
+
+<main id="top">
+
+  <!-- ============ HERO ============ -->
+  <section class="hero">
+    <div class="wrap hero-grid">
+      <div class="hero-copy reveal">
+        <p class="eyebrow">电路分析 · 参考方向</p>
+        <h1>先定方向，<br><span class="thin">再让读数</span><span class="hl-mark">带符号</span>。</h1>
+        <p class="lede">电路图上的箭头和正负号，大多不是电路自带的属性，而是你落笔前先立下的约定。约定一换，读数就变号——但电阻的发热、灯泡的亮度，一点都没变。</p>
+        <div class="chips">
+          <span class="chip">一个回路</span>
+          <span class="chip">两处约定</span>
+          <span class="chip">三种符号</span>
+        </div>
+        <div class="cta-row">
+          <a class="btn primary" href="#lab">看这道例题 <span class="arw">→</span></a>
+          <a class="btn ghost" href="#rules">先分清三件事</a>
+        </div>
+      </div>
+
+      <div class="hero-card reveal d1" id="heroCard">
+        <div class="hc-head">
+          <span>同一股电流 · 两个约定</span>
+          <span class="hc-badge" id="heroBadge">参考方向 →</span>
+        </div>
+        <div class="hc-num" id="heroNum">+2.00 A</div>
+        <div class="hc-sub" id="heroSub">按“向右”读出的电流</div>
+
+        <svg class="hero-svg" viewBox="0 24 520 176" role="img" aria-label="一段导线，实际电流始终向右流动，参考方向箭头可以翻转">
+          <!-- actual flow -->
+          <line x1="58" y1="128" x2="462" y2="128" style="stroke:var(--ink);stroke-width:3;stroke-linecap:round"/>
+          <line class="flow" x1="58" y1="128" x2="462" y2="128"/>
+          <text class="lbl sm" x="58" y="168">实际电流：一直向右</text>
+          <!-- reference arrow -->
+          <g class="ref-arrow" id="heroArrow">
+            <line x1="196" y1="74" x2="300" y2="74"/>
+            <path class="head" d="M318 74 L298 63 L298 85 Z"/>
+          </g>
+          <text class="arrow-label" x="257" y="50" text-anchor="middle">你的参考方向</text>
+          <text class="lbl sm" x="58" y="100" style="fill:var(--muted)">导线</text>
+        </svg>
+
+        <div class="hc-foot">
+          <span class="factline">物理不变：向右 <b>2.00 A</b></span>
+          <button class="flip-btn" id="heroFlip" type="button">换成反向参考</button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ RULES ============ -->
+  <section class="section" id="rules">
+    <div class="wrap">
+      <div class="rules-head reveal">
+        <p class="eyebrow">先分清三件事</p>
+        <h2>实际方向、参考方向、读数</h2>
+        <p>把它们混在一起，符号就一定会乱。分开看，每一步都只有一件事要做。</p>
+      </div>
+
+      <div class="cards-3">
+        <article class="pcard reveal">
+          <div class="tag"><span>事实 / PHYSICAL</span><span class="dot a"></span></div>
+          <div class="glyph">
+            <svg class="glyph-svg" viewBox="0 0 220 66" aria-hidden="true">
+              <line x1="24" y1="33" x2="196" y2="33" style="stroke:var(--ink);stroke-width:2.4;stroke-linecap:round"/>
+              <line class="flow" x1="24" y1="33" x2="196" y2="33" style="stroke-width:6"/>
+            </svg>
+          </div>
+          <h3>实际方向</h3>
+          <p>电荷真正的流向，客观存在且唯一。它从不因为你怎么画而改变。</p>
+        </article>
+
+        <article class="pcard reveal d1">
+          <div class="tag"><span>约定 / CONVENTION</span><span class="dot b"></span></div>
+          <div class="glyph">
+            <svg class="glyph-svg" viewBox="0 0 220 66" aria-hidden="true">
+              <g class="flipwrap">
+                <line x1="46" y1="33" x2="150" y2="33" style="stroke:var(--violet);stroke-width:2.4;stroke-dasharray:7 6;stroke-linecap:round"/>
+                <path d="M170 33 L150 23 L150 43 Z" style="fill:var(--violet)"/>
+              </g>
+            </svg>
+          </div>
+          <h3>参考方向</h3>
+          <p>你在图上画的箭头和 + / −，是列方程前自己定的坐标轴。选哪边都行，选反了也不算错。</p>
+        </article>
+
+        <article class="pcard reveal d2">
+          <div class="tag"><span>代数 / ALGEBRA</span><span class="dot c"></span></div>
+          <div class="glyph">
+            <div class="crossfade" aria-hidden="true"><span class="p">+2.00</span><span class="n">−2.00</span></div>
+          </div>
+          <h3>读数</h3>
+          <p>同向取正、反向取负。负号不是“负电流”，而是提醒你：真实方向和你的约定相反。</p>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ LAB ============ -->
+  <section class="section" id="lab">
+    <div class="wrap">
+      <div class="lab-head reveal">
+        <div>
+          <p class="eyebrow">例题 / ONE LOOP</p>
+          <h2>一条回路，两套约定</h2>
+        </div>
+        <p>12 V 电源串联 2 Ω 和 4 Ω。物理事实只有一条：<b>顺时针 2 A</b>。下面你只改“怎么标”，不改“怎么流”。</p>
+      </div>
+
+      <div class="lab-grid">
+        <!-- circuit -->
+        <div class="card circuit-card reveal" id="labCard">
+          <span class="badge">
+            <span class="ok">参考方向与实际一致</span>
+            <span class="warn">参考方向与实际相反</span>
+          </span>
+          <div class="lab-svg-wrap">
+          <svg class="circuit-svg lab-svg" viewBox="0 0 540 372" role="img" aria-label="单回路：12V 电源、2Ω 与 4Ω 电阻，可切换电流和电压参考方向">
+            <!-- wires -->
+            <g class="wires">
+              <path d="M95 95 H445 V315 H95 Z"/>
+            </g>
+            <!-- actual current dots (always clockwise) -->
+            <path class="flow" d="M95 95 H445 V315 H95 Z"/>
+            <!-- R1 -->
+            <rect class="comp" x="300" y="86" width="62" height="18" rx="2"/>
+            <text class="lbl" x="331" y="60" text-anchor="middle">R₁ = 2 Ω</text>
+            <!-- voltage reference for R1 -->
+            <g id="labPolA" class="pol">
+              <text class="mark plus" x="300" y="136" text-anchor="middle">+</text>
+              <text class="mark minus" x="362" y="136" text-anchor="middle">−</text>
+            </g>
+            <g id="labPolB" class="pol hide">
+              <text class="mark minus" x="300" y="136" text-anchor="middle">−</text>
+              <text class="mark plus" x="362" y="136" text-anchor="middle">+</text>
+            </g>
+            <text class="lbl sm" x="331" y="158" text-anchor="middle">U₁ 的参考极性</text>
+            <!-- reference current arrow above top wire -->
+            <g class="ref-arrow" id="labRef">
+              <line x1="128" y1="48" x2="212" y2="48"/>
+              <path class="head" d="M232 48 L212 38 L212 58 Z"/>
+            </g>
+            <text class="arrow-label" x="180" y="28" text-anchor="middle">参考 I</text>
+            <!-- source -->
+            <circle class="comp" cx="95" cy="205" r="32"/>
+            <text class="mark plus" x="95" y="198" text-anchor="middle">+</text>
+            <text class="mark minus" x="95" y="228" text-anchor="middle">−</text>
+            <text class="lbl" x="140" y="202">U_s = 12 V</text>
+            <!-- R2 -->
+            <rect class="comp" x="436" y="176" width="18" height="58" rx="2"/>
+            <text class="lbl sm" x="462" y="210">R₂ = 4 Ω</text>
+            <!-- caption -->
+            <text class="lbl sm" x="270" y="352" text-anchor="middle" style="fill:var(--muted)">橙色圆点 = 实际电流方向（永远顺时针）</text>
+          </svg>
+          </div>
+          <div class="circuit-foot">
+            <span>物理事实：<b>I = 2.00 A</b>（顺时针），<b>R₁</b> 上左端电位更高</span>
+          </div>
+        </div>
+
+        <!-- panel -->
+        <div class="card panel-card reveal d1">
+          <div class="ctrl">
+            <span class="ctrl-label">电流参考方向</span>
+            <div class="seg" role="group" aria-label="电流参考方向">
+              <button type="button" data-dir="cw" class="is-on" aria-pressed="true">顺时针 ⟳</button>
+              <button type="button" data-dir="ccw" aria-pressed="false">逆时针 ⟲</button>
+            </div>
+          </div>
+
+          <div class="ctrl">
+            <span class="ctrl-label">R₁ 电压参考极性</span>
+            <div class="seg" role="group" aria-label="R₁ 电压参考极性">
+              <button type="button" data-pol="left" class="is-on" aria-pressed="true">左 + / 右 −</button>
+              <button type="button" data-pol="right" aria-pressed="false">左 − / 右 +</button>
+            </div>
+          </div>
+
+          <div class="readout" aria-live="polite">
+            <div class="ro"><span>参考电流 I</span><b id="labI">+2.00 A</b></div>
+            <div class="ro"><span>R₁ 参考电压 U₁</span><b id="labU">+4.00 V</b></div>
+            <div class="ro"><span>参考方向关系</span><b><span class="pill assoc" id="labAssoc">关联 · 电流从 + 端流入</span></b></div>
+            <div class="ro" style="border-bottom:0"><span>R₁ 功率 P（按吸收算）</span><b id="labP">+8.00 W</b></div>
+          </div>
+
+          <p style="margin:-6px 2px 0"><a class="inline-link" href="#conventions">“关联”到底在说什么？</a></p>
+
+          <div class="eqbox" id="labFormula">
+            <span class="eq-k">功率怎么算</span>
+            P = U₁·I = <span class="hl">(+4.00)(+2.00)</span> = +8.00 W 吸收
+          </div>
+
+          <div class="eqbox" id="labKvl">
+            <span class="eq-k">KVL（这里让绕行方向 = 电流参考方向）</span>
+            2I + 4I − 12 = 0 ⇒ I = +2.00 A
+          </div>
+          <p style="margin:-6px 2px 0"><a class="inline-link" href="#loop">绕行方向为什么能这样选？</a></p>
+
+          <div class="factline">实际电压：左端比右端高 <b>4.00 V</b>（左 +）。实际功率：R₁ 永远吸收 <b>8.00 W</b>，电源放出 <b>24.00 W</b>，R₂ 吸收 <b>16.00 W</b>。</div>
+
+          <details class="note">
+            <summary>为什么电源项有时写 −12，有时写 +12？</summary>
+            <div class="note-body">
+              <p>本例里让<b>绕行方向始终跟着电流参考方向</b>走。于是电阻项永远是 <span class="kv">+RI</span>，符号只由电源项决定。</p>
+              <p><b>顺时针</b>：依次走过 R₁、R₂，电流与绕行同向，记 <span class="kv">+2I</span>、<span class="kv">+4I</span>。走过电源时从 − 端到 + 端，电位升高 12 V，写成“电压降”就是 <span class="kv">−12</span>。得 <span class="kv">2I + 4I − 12 = 0</span>，<b>I = +2 A</b>。</p>
+              <p><b>逆时针</b>：电阻项仍是 <span class="kv">+2I</span>、<span class="kv">+4I</span>；电源改为从 + 端到 − 端，写成电压降是 <span class="kv">+12</span>。得 <span class="kv">2I + 4I + 12 = 0</span>，<b>I = −2 A</b>。</p>
+              <p>两式说的是同一股物理电流：顺时针 2 A。第二式的负号，只是“参考方向取反”的记账。</p>
+            </div>
+          </details>
+        </div>
+      </div>
+
+      <div class="card power-ledger reveal" id="power">
+        <div class="pl-head">
+          <div>
+            <p class="eyebrow" style="margin-bottom:8px">功率账本 / POWER BALANCE</p>
+            <h3>为什么电阻写 <span class="nw">+8 W</span>，电源写 <span class="nw">−24 W</span>？</h3>
+          </div>
+          <p class="pl-intro">统一按“<b>吸收</b>”来记账：P 为正就是真吸收；P 为负就说明它在放出。</p>
+        </div>
+
+        <div class="pl-rows">
+          <div class="pl-item out">
+            <div class="pl-top"><span class="pl-name">电源 U_s</span><span class="pl-tag out">放出</span></div>
+            <div class="pl-val neg">−24.00 W</div>
+            <div class="pl-formula" id="plSrcFormula">P_s = −U_s·I = −(12)(+2.00) = −24.00 W</div>
+            <div class="pl-note">负号 = 按“吸收”记账为负 ⇒ 实际在放出 24.00 W。</div>
+          </div>
+          <div class="pl-item in">
+            <div class="pl-top"><span class="pl-name">R₁ = 2 Ω</span><span class="pl-tag in">吸收</span></div>
+            <div class="pl-val pos">+8.00 W</div>
+            <div class="pl-formula">P₁ = I²R₁ = 2² × 2 = 8.00 W</div>
+            <div class="pl-note">电阻永远吸收，所以吸收功率恒为正。</div>
+          </div>
+          <div class="pl-item in">
+            <div class="pl-top"><span class="pl-name">R₂ = 4 Ω</span><span class="pl-tag in">吸收</span></div>
+            <div class="pl-val pos">+16.00 W</div>
+            <div class="pl-formula">P₂ = I²R₂ = 2² × 4 = 16.00 W</div>
+            <div class="pl-note">8 W + 16 W = 24 W，正好等于电源放出的功率。</div>
+          </div>
+        </div>
+
+        <div class="pl-bars">
+          <div class="pl-bar-row">
+            <span class="pl-bar-label">放出</span>
+            <div class="pl-track"><span class="pl-fill out">电源 24 W</span></div>
+          </div>
+          <div class="pl-bar-row">
+            <span class="pl-bar-label">吸收</span>
+            <div class="pl-track">
+              <span class="pl-fill in1">R₁ 8 W</span>
+              <span class="pl-fill in2">R₂ 16 W</span>
+            </div>
+          </div>
+        </div>
+
+        <p class="pl-rule"><b>口诀：</b>先按“吸收”算 <span class="kv">P</span>；<b>P &gt; 0 吸收</b>（记 +），<b>P &lt; 0 放出</b>（记 −）。电阻的吸收功率恒正；电源算成负的，就是在放出。换参考方向只会换算法，不会换结论。</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ LOOP ARROW ============ -->
+  <section class="section" id="loop">
+    <div class="wrap">
+      <div class="rules-head reveal">
+        <p class="eyebrow">补充 / LOOP ARROW</p>
+        <h2>列 KVL 时，那个绕圈的箭头是什么？</h2>
+        <p>它叫<b>绕行方向</b>：写回路方程前，你先选定“沿着哪一边绕一圈”，作为给各项定正负的尺子。它不是电流的真实方向，也不是电流的参考方向——三件事可以互不相同。</p>
+      </div>
+
+      <div class="loop-grid">
+        <div class="card loop-card reveal">
+          <span class="badge">独立的约定 · 与参考电流无关</span>
+          <svg class="loop-svg" viewBox="0 0 460 320" role="img" aria-label="回路绕行方向示意图：橙色虚线为电流参考方向，紫色虚线圈为 KVL 绕行方向">
+            <defs>
+              <marker id="arrVioletLoop" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto">
+                <path d="M0 0 L10 5 L0 10 Z" fill="var(--violet)"/>
+              </marker>
+            </defs>
+
+            <!-- loop -->
+            <g class="wires">
+              <path d="M90 80 H370 V260 H90 Z"/>
+            </g>
+
+            <!-- R1 top -->
+            <rect class="comp" x="205" y="71" width="54" height="18" rx="2"/>
+            <text class="lbl sm" x="232" y="58" text-anchor="middle">2 Ω</text>
+
+            <!-- source left -->
+            <circle class="comp" cx="90" cy="170" r="24"/>
+            <text class="mark plus" x="90" y="166" text-anchor="middle">+</text>
+            <text class="mark minus" x="90" y="190" text-anchor="middle">−</text>
+            <text class="lbl sm" x="54" y="174" text-anchor="end">12 V</text>
+
+            <!-- R2 right -->
+            <rect class="comp" x="361" y="145" width="18" height="50" rx="2"/>
+            <text class="lbl sm" x="390" y="174">4 Ω</text>
+
+            <!-- amber reference current (fixed CW) -->
+            <g class="ref-arrow">
+              <line x1="128" y1="80" x2="182" y2="80"/>
+              <path class="head" d="M198 80 L184 72 L184 88 Z"/>
+            </g>
+            <text class="arrow-label" x="158" y="60" text-anchor="middle">参考 I</text>
+
+            <!-- violet traversal arrow -->
+            <g class="loop-arrow" id="loopArrow">
+              <path d="M250 114 H320 Q336 114 336 130 V210 Q336 226 320 226 H140 Q124 226 124 210 V130 Q124 114 140 114 H210" marker-end="url(#arrVioletLoop)"/>
+            </g>
+            <text class="loop-arrow-label" x="230" y="176" text-anchor="middle">绕行方向</text>
+          </svg>
+
+          <div class="ctrl">
+            <span class="ctrl-label">绕行方向（只影响 KVL 写法）</span>
+            <div class="seg" role="group" aria-label="KVL 绕行方向">
+              <button type="button" data-loopdir="cw" class="is-on" aria-pressed="true">顺时针绕 ⟳</button>
+              <button type="button" data-loopdir="ccw" aria-pressed="false">逆时针绕 ⟲</button>
+            </div>
+          </div>
+        </div>
+
+        <div class="loop-copy reveal d1">
+          <div class="body">
+            <p>橙色虚线箭头是<b>电流参考方向</b>（这里固定在顺时针）；紫色虚线圈是 <b>KVL 绕行方向</b>。两者各自独立，可以同向也可以反向。</p>
+            <p>它为什么必须存在？因为 KVL 说“沿任意闭合回路，电压降的代数和为零”——“沿哪个方向绕”就是你替这条回路选的<b>正方向</b>。</p>
+          </div>
+
+          <div class="loop-rules">
+            <div class="lr"><span class="tag">过电阻</span><p>绕行方向与电流参考方向 <b>同向 → +RI</b>；<b>反向 → −RI</b>。</p></div>
+            <div class="lr"><span class="tag">过电源</span><p>绕行从 <b>− 到 +</b>（电位升高）→ 记为 <b>−U_s</b>；从 <b>+ 到 −</b> → <b>+U_s</b>。</p></div>
+          </div>
+
+          <div class="eqbox" id="loopEq">
+            <span class="eq-k">KVL（电流参考方向固定为顺时针）</span>
+            沿顺时针：2I + 4I − 12 = 0 ⇒ I = <b>+2.00 A</b>
+          </div>
+
+          <p class="factline" style="margin-top:12px" id="loopHint">绕行方向与电流参考方向同向：电阻项取 +RI。</p>
+
+          <p style="margin-top:14px;font-size:13px;color:var(--muted)">绕行方向整体反过来，方程每一项都变号，但解出的 <b>I 不变</b>——只是换了个记账方向。为省事，常直接让绕行方向 = 电流参考方向，此时电阻项全是 <span class="kv">+RI</span>（主例题就是这么做的）。<a class="inline-link" href="#lab">回到主例题</a></p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ CONVENTIONS ============ -->
+  <section class="section" id="conventions">
+    <div class="wrap">
+      <div class="rules-head reveal">
+        <p class="eyebrow">概念澄清 / CONVENTIONS</p>
+        <h2>关联、参考极性、电源极性：谁能随便设？</h2>
+        <p>先把三样东西分开：<b>实际方向</b>、<b>你画的参考方向</b>、<b>元件给定的极性</b>。混在一起，符号就会打架。</p>
+      </div>
+
+      <div class="conv-grid">
+        <div class="conv-copy reveal">
+          <h3>① “关联”是两套参考之间的关系，不是电流方向</h3>
+          <p>判断只看参考方向：<b>参考电流从电压的 + 端流入 → 关联</b>；从 − 端流入（即从 + 端流出）→ <b>非关联</b>。</p>
+          <p>它和真实电流往哪流无关。下面四种画法都合法，读数各不相同，但 R₁ 永远吸收 <b>8 W</b>。</p>
+          <p>还要分清：<b>无源元件的电压 +/−</b> 是人定的参考极性；<b>参考节点 / 地</b> 也是人选的 0 V，换它只让所有节点电位平移，不改变电压差。</p>
+          <div class="conv-note">网页里的“关联 · 参考电流从 + 端流入”，检查的是这两个参考约定，而不是在描述实际电流。</div>
+        </div>
+
+        <div class="table-wrap reveal d1">
+          <table class="ctable">
+            <caption>R₁ 的四种画法 · 物理事实：电流向右 2 A，左端高 4 V</caption>
+            <thead>
+              <tr><th>参考 I</th><th>U₁ 的 +</th><th>关系</th><th>读数 U₁ / I</th><th class="okcol">P吸收</th></tr>
+            </thead>
+            <tbody>
+              <tr><td>→ 右</td><td>左端</td><td class="assoc">关联</td><td class="num">+4 V / +2 A</td><td class="ok">+8 W</td></tr>
+              <tr><td>← 左</td><td>左端</td><td class="non">非关联</td><td class="num">+4 V / −2 A</td><td class="ok">+8 W</td></tr>
+              <tr><td>→ 右</td><td>右端</td><td class="non">非关联</td><td class="num">−4 V / +2 A</td><td class="ok">+8 W</td></tr>
+              <tr><td>← 左</td><td>右端</td><td class="assoc">关联</td><td class="num">−4 V / −2 A</td><td class="ok">+8 W</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+      <div class="free-fixed">
+        <div class="ff-card free reveal">
+          <h3>你可以自由设定</h3>
+          <ul>
+            <li><b>支路电流参考箭头</b><span>改了，读数整体变号</span></li>
+            <li><b>无源元件的电压 +/−</b><span>改了，U 变号；元件律的写法要跟着改</span></li>
+            <li><b>KVL 绕行方向</b><span>改了，方程整体变号，解不变</span></li>
+            <li><b>参考节点 / 地</b><span>改了，只让所有节点电位平移，电压差不变</span></li>
+          </ul>
+        </div>
+
+        <div class="ff-card fixed reveal d1">
+          <h3>不能单独改</h3>
+          <ul>
+            <li><b>电源的 +/− 与 U_s</b><span>成对固定：把 + 挪位，U_s 必须同时变号</span></li>
+            <li><b>受控源控制量的参考方向</b><span>属于模型；单独翻箭头，等于换了一道题</span></li>
+          </ul>
+          <p>但<b>流过电源的电流参考箭头</b>仍然自由；它只决定用 <span class="kv">P = UI</span> 还是 <span class="kv">P = −UI</span>。</p>
+        </div>
+      </div>
+
+      <div class="src-polar reveal">
+        <div>
+          <p class="eyebrow">电源的极性为什么“给定”</p>
+          <p>理想电压源的 <b>+/−</b> 和 <b>U_s</b> 是同一个模型参数的两面：<span class="kv">+ 在上、U_s = 12 V</span> 表示 <span class="kv">V上 − V下 = 12 V</span>。把 + 挪到下边却不把 U_s 改成 −12 V，描述的就已经是另一个源了。</p>
+          <p>不过电流参考箭头仍由你定。两种画法算出的“吸收功率”都是 −24 W ⇒ 实际放出 24 W：</p>
+        </div>
+        <div class="src-eq">
+          <div class="src-line"><span>电流参考 ↑（离开 +）· 非关联</span><code>P = −U_s·I = −12 × 2 = −24 W</code></div>
+          <div class="src-line"><span>电流参考 ↓（进入 +）· 关联</span><code>P = U_s·I = 12 × (−2) = −24 W</code></div>
+          <p class="src-foot">公式变了，结论不变：电源放出 24 W。</p>
+        </div>
+      </div>
+
+      <p class="conv-summary reveal">一句话：<b>电流箭头自由；无源元件的电压极性自由；电源的电压极性与数值给定；</b>“关联”只决定用 <span class="kv">P = UI</span> 还是 <span class="kv">P = −UI</span>，不改变物理功率。</p>
+    </div>
+  </section>
+
+  <!-- ============ TRANSLATOR ============ -->
+  <section class="section" id="sign">
+    <div class="wrap">
+      <div class="rules-head reveal">
+        <p class="eyebrow">读法 / SIGN → DIRECTION</p>
+        <h2>看到 −2.00 A，先翻译方向</h2>
+        <p>负号不是“电流是负的”。电流的大小永远为正，负号只描述<strong>方向</strong>与你画的箭头相反。</p>
+      </div>
+
+      <div class="trans-grid">
+        <div class="card trans-card ref reveal">
+          <span class="tag">你写的约定</span>
+          <div class="big">−2.00 A</div>
+          <p>参考箭头向左，读数是负的。</p>
+          <svg class="trans-svg" viewBox="0 0 320 92" aria-hidden="true">
+            <line x1="34" y1="56" x2="286" y2="56" style="stroke:var(--ink);stroke-width:2.6;stroke-linecap:round"/>
+            <line class="flow" x1="34" y1="56" x2="286" y2="56" style="stroke-width:5"/>
+            <g class="ref-arrow" style="color:var(--red)">
+              <line x1="176" y1="22" x2="100" y2="22"/>
+              <path class="head" d="M80 22 L100 12 L100 32 Z"/>
+            </g>
+            <text class="lbl sm" x="34" y="86" style="fill:var(--muted)">红色虚线箭头 = 参考方向</text>
+          </svg>
+        </div>
+
+        <div class="trans-mid reveal d1" aria-hidden="true">
+          <div class="turn-icon">
+            <svg width="26" height="26" viewBox="0 0 26 26" fill="none" aria-hidden="true">
+              <path d="M5 13a8 8 0 1 0 3-6.2" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+              <path d="M8 3v5H3" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+          </div>
+          <span class="turn-cap">转 180°</span>
+        </div>
+
+        <div class="card trans-card act reveal d2">
+          <span class="tag">物理的事实</span>
+          <div class="big">2.00 A →</div>
+          <p>大小取绝对值，方向沿参考方向转 180°。</p>
+          <svg class="trans-svg" viewBox="0 0 320 92" aria-hidden="true">
+            <line x1="34" y1="56" x2="286" y2="56" style="stroke:var(--ink);stroke-width:2.6;stroke-linecap:round"/>
+            <line class="flow" x1="34" y1="56" x2="286" y2="56" style="stroke-width:5"/>
+            <g style="color:var(--green)">
+              <line x1="100" y1="22" x2="200" y2="22" stroke="currentColor" stroke-width="3" stroke-linecap="round"/>
+              <path d="M220 22 L200 12 L200 32 Z" fill="currentColor"/>
+            </g>
+            <text class="lbl sm" x="34" y="86" style="fill:var(--muted)">绿色实线箭头 = 实际方向</text>
+          </svg>
+        </div>
+      </div>
+
+      <div class="trans-note">
+        <div class="tn reveal"><span class="n">01</span><p>读数的绝对值，就是电流的真实大小。</p></div>
+        <div class="tn reveal d1"><span class="n">02</span><p>读数为负，就把参考箭头转 180°，得到实际方向。</p></div>
+        <div class="tn reveal d2"><span class="n">03</span><p>实际方向和你画的箭头一致时，读数为正，不用转。</p></div>
+      </div>
+
+      <div class="power-note reveal">
+        同样的翻译用在功率上：电源支路的 <b>P = −24 W</b>（按“吸收”算），负号表示它其实在<b>放出 24 W</b>。所以口诀是：<b>P &gt; 0 吸收，P &lt; 0 放出</b>。
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ ORIGIN ============ -->
+  <section class="section origin-panel" id="origin">
+    <div class="wrap">
+      <div class="rules-head reveal">
+        <p class="eyebrow">回到上一题</p>
+        <h2>四个箭头，四份约定</h2>
+      </div>
+
+      <div class="origin-grid">
+        <div class="card origin-card reveal">
+          <span class="badge">原题 · 参考方向已标出</span>
+          <svg class="origin-svg" viewBox="0 0 720 420" role="img" aria-label="上一题电路：含受控源的四个参考方向">
+            <defs>
+              <marker id="arrAmber" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+                <path d="M0 0 L10 5 L0 10 Z" fill="var(--amber)"/>
+              </marker>
+              <marker id="arrViolet" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6.5" markerHeight="6.5" orient="auto-start-reverse">
+                <path d="M0 0 L10 5 L0 10 Z" fill="var(--violet)"/>
+              </marker>
+            </defs>
+
+            <!-- wires -->
+            <g class="wires">
+              <path d="M110 80 H610 V360 H110 Z"/>
+              <path d="M110 215 H610"/>
+              <path d="M380 215 V360"/>
+            </g>
+
+            <!-- 10Ω -->
+            <rect class="comp" x="165" y="71" width="60" height="18" rx="2"/>
+            <text class="lbl sm" x="195" y="52" text-anchor="middle">10 Ω</text>
+
+            <!-- source Us -->
+            <circle class="comp" cx="480" cy="80" r="30"/>
+            <text class="mark plus" x="466" y="87" text-anchor="middle">+</text>
+            <text class="mark minus" x="494" y="87" text-anchor="middle">−</text>
+            <text class="lbl sm" x="480" y="132" text-anchor="middle">U_s</text>
+
+            <!-- left 5Ω -->
+            <rect class="comp" x="101" y="245" width="18" height="60" rx="2"/>
+            <text class="lbl sm" x="131" y="280">5 Ω</text>
+
+            <!-- VCCS 0.1U2 (arrow left) -->
+            <g class="dep">
+              <path d="M185 189 L215 215 L185 241 L155 215 Z"/>
+              <path class="dep-arrow" d="M207 215 H176" marker-end="url(#arrViolet)"/>
+            </g>
+            <text class="lbl sm" x="185" y="176" text-anchor="middle" style="fill:var(--violet)">0.1U₂ ←</text>
+
+            <!-- mid 5Ω left -->
+            <rect class="comp" x="265" y="206" width="60" height="18" rx="2"/>
+            <text class="lbl sm" x="295" y="190" text-anchor="middle">5 Ω</text>
+
+            <!-- mid 5Ω right -->
+            <rect class="comp" x="455" y="206" width="60" height="18" rx="2"/>
+            <text class="lbl sm" x="485" y="190" text-anchor="middle">5 Ω</text>
+
+            <!-- CCVS 2I1 (plus top) -->
+            <g class="dep">
+              <path d="M380 260 L414 290 L380 320 L346 290 Z"/>
+              <text class="mark plus" x="372" y="284">+</text>
+              <text class="mark minus" x="372" y="310">−</text>
+            </g>
+            <text class="lbl sm" x="330" y="296" text-anchor="end">2I₁</text>
+
+            <!-- right 10Ω -->
+            <rect class="comp" x="601" y="245" width="18" height="60" rx="2"/>
+
+            <!-- U2 reference polarity -->
+            <g id="u2Ref">
+              <text class="mark plus" x="640" y="246">+</text>
+              <text class="mark minus" x="640" y="322">−</text>
+            </g>
+            <g id="u2Actual" class="hide">
+              <text class="mark minus" x="640" y="246">−</text>
+              <text class="mark plus" x="640" y="322">+</text>
+            </g>
+            <text class="lbl sm" x="666" y="290">U₂</text>
+
+            <!-- I1 reference arrow -->
+            <path class="ref-arrow" d="M610 164 V114" marker-end="url(#arrAmber)" style="fill:none"/>
+            <text class="lbl sm" x="626" y="142" style="fill:var(--amber)">I₁</text>
+          </svg>
+        </div>
+
+        <div class="origin-copy reveal d1">
+          <div class="body">
+            <p>上一题里你标了四份约定：<b>I₁ ↑</b>、<b>U₂ 上 + 下 −</b>、<b>0.1U₂ ←</b>、<b>2I₁ 上 + 下 −</b>。</p>
+            <p>设 <b>U_s &gt; 0</b>，解出 <span class="kv">I₁ = U_s/16 &gt; 0</span>，说明实际方向和箭头一致；<span class="kv">U₂ = −U_s/8 &lt; 0</span>，说明实际极性和你标的上 + 下 − <b>相反</b>——实际是下 + 上 −。</p>
+            <p>但 <span class="kv">U₂ = −2I₁</span> 这个关系，是在你选的这组参考方向下成立的。负号属于“约定 vs 事实”，不是方程算错了。</p>
+          </div>
+
+          <div class="caution">
+            <b>一个容易踩的坑：</b>受控源里的 I₁、U₂ 是控制量。参考方向是受控源模型的一部分——只改箭头、不改受控源的符号，等于换了一道题。
+          </div>
+
+          <div class="pol-toggle">
+            <button class="flip-btn" id="originFlip" type="button" aria-pressed="false">显示 U₂ 的实际极性</button>
+          </div>
+          <p class="origin-cap">
+            <span class="cap-ref">按你标的参考方向读出：U₂ = −U_s/8 &lt; 0（设 U_s &gt; 0）。</span>
+            <span class="cap-actual">翻译：实际极性是 <b>下 + 上 −</b>；大小 |U₂| = U_s/8。</span>
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ TAKEAWAY ============ -->
+  <section class="section" style="padding-top:0">
+    <div class="wrap">
+      <div class="takeaway reveal">
+        <p class="eyebrow">带走这四条</p>
+        <h2>符号不是猜的，是记出来的。</h2>
+        <div class="tk-grid">
+          <div class="tk"><span class="n">01</span><p><b>先假设，再列式。</b>箭头画在哪边都不算错，画完就别中途偷偷改。</p></div>
+          <div class="tk"><span class="n">02</span><p><b>同向取正，反向取负。</b>算出负号，就把实际方向翻译成箭头的反方向。</p></div>
+          <div class="tk"><span class="n">03</span><p><b>关联 <span class="m">P = UI</span>，非关联 <span class="m">P = −UI</span>。</b>P &gt; 0 吸收，P &lt; 0 放出。</p></div>
+          <div class="tk"><span class="n">04</span><p><b>受控源的控制量也有参考方向。</b>它是模型的一部分，不能单独翻。</p></div>
+        </div>
+        <p class="closing">参考方向，是你动笔前替电路签的一份<span>协议</span>。<br>协议可以随便签，签完就得按它记账。</p>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<footer>
+  <div class="wrap">
+    <span class="mono">SIGN·LAB / 参考方向单页讲义</span>
+    <span>一个回路 · 两处约定 · 2026</span>
+  </div>
+</footer>
+
+<script>
+(function () {
+  'use strict';
+
+  var reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  var MINUS = '\u2212';
+
+  function signed(v, unit) {
+    var sign = v >= 0 ? '+' : MINUS;
+    return sign + Math.abs(v).toFixed(2) + ' ' + unit;
+  }
+  function signedNum(v) {
+    var sign = v >= 0 ? '+' : MINUS;
+    return sign + Math.abs(v).toFixed(2);
+  }
+
+  /* ---------------- hero ---------------- */
+  var heroCard  = document.getElementById('heroCard');
+  var heroNum   = document.getElementById('heroNum');
+  var heroArrow = document.getElementById('heroArrow');
+  var heroBadge = document.getElementById('heroBadge');
+  var heroSub   = document.getElementById('heroSub');
+  var heroFlip  = document.getElementById('heroFlip');
+  var heroSection = document.querySelector('.hero');
+  var heroDir   = 1;
+  var heroTimer = null;
+  var heroStopped = false;
+
+  function pop(el) {
+    if (reduceMotion || !el || !el.animate) return;
+    el.animate(
+      [{ transform: 'translateY(-5px)', opacity: 0.45 }, { transform: 'none', opacity: 1 }],
+      { duration: 280, easing: 'cubic-bezier(.2,.8,.2,1)' }
+    );
+  }
+
+  function setHero(dir) {
+    heroDir = dir;
+    var v = dir * 2;
+    heroNum.textContent = signed(v, 'A');
+    heroNum.classList.toggle('is-neg', v < 0);
+    heroCard.classList.toggle('is-neg', v < 0);
+    heroArrow.classList.toggle('flip', dir < 0);
+    heroBadge.textContent = dir > 0 ? '参考方向 \u2192' : '参考方向 \u2190';
+    heroSub.textContent = dir > 0 ? '按“向右”读出的电流' : '按“向左”读出的电流';
+    pop(heroNum);
+  }
+
+  function startHeroLoop() {
+    if (reduceMotion || heroStopped) return;
+    clearInterval(heroTimer);
+    heroTimer = setInterval(function () { setHero(-heroDir); }, 3800);
+  }
+  function pauseHeroLoop() {
+    clearInterval(heroTimer);
+    heroTimer = null;
+  }
+
+  heroFlip.addEventListener('click', function () {
+    heroStopped = true;
+    pauseHeroLoop();
+    setHero(-heroDir);
+  });
+  heroSection.addEventListener('pointerenter', pauseHeroLoop);
+  heroSection.addEventListener('focusin', pauseHeroLoop);
+  heroSection.addEventListener('pointerleave', function () { if (!heroStopped) startHeroLoop(); });
+  heroSection.addEventListener('focusout', function (e) {
+    if (!heroStopped && !heroSection.contains(e.relatedTarget)) startHeroLoop();
+  });
+
+  setHero(1);
+  startHeroLoop();
+
+  /* ---------------- lab ---------------- */
+  var lab = { dir: 'cw', pol: 'left' };
+  var elI      = document.getElementById('labI');
+  var elU      = document.getElementById('labU');
+  var elAssoc  = document.getElementById('labAssoc');
+  var elP      = document.getElementById('labP');
+  var elForm   = document.getElementById('labFormula');
+  var elKvl    = document.getElementById('labKvl');
+  var elRef    = document.getElementById('labRef');
+  var elPolA   = document.getElementById('labPolA');
+  var elPolB   = document.getElementById('labPolB');
+  var labCard  = document.getElementById('labCard');
+  var elPlSrc  = document.getElementById('plSrcFormula');
+
+  function renderLab() {
+    var cw = lab.dir === 'cw';
+    var plusLeft = lab.pol === 'left';
+
+    var I = cw ? 2 : -2;
+    var U = plusLeft ? 4 : -4;
+    var associated = (cw === plusLeft);
+    var P = associated ? (U * I) : (-(U * I));
+
+    elI.textContent = signed(I, 'A');
+    elI.classList.toggle('val-neg', I < 0);
+
+    elU.textContent = signed(U, 'V');
+    elU.classList.toggle('val-neg', U < 0);
+
+    elAssoc.textContent = associated
+      ? '关联 · 参考电流从 + 端流入'
+      : '非关联 · 参考电流从 + 端流出';
+    elAssoc.className = 'pill ' + (associated ? 'assoc' : 'non');
+
+    elP.textContent = signed(P, 'W');
+    elP.classList.toggle('val-neg', P < 0);
+
+    [elI, elU, elP].forEach(pop);
+
+    if (elPlSrc) {
+      elPlSrc.textContent = cw
+        ? 'P_s = \u2212U_s\u00b7I = \u2212(12)(+2.00) = \u221224.00 W'
+        : 'P_s = U_s\u00b7I = (12)(\u22122.00) = \u221224.00 W';
+    }
+
+    elForm.innerHTML = '<span class="eq-k">功率怎么算</span>' + (associated
+      ? 'P = U\u2081\u00b7I = <span class="hl">(' + signedNum(U) + ')(' + signedNum(I) + ')</span> = ' + signed(P, 'W') + ' 吸收'
+      : 'P = \u2212U\u2081\u00b7I = \u2212<span class="hl">(' + signedNum(U) + ')(' + signedNum(I) + ')</span> = ' + signed(P, 'W') + ' 吸收');
+
+    elKvl.innerHTML = '<span class="eq-k">KVL（这里让绕行方向 = 电流参考方向）</span>' + (cw
+      ? '2I + 4I \u2212 12 = 0 \u21d2 I = <b>+2.00 A</b>'
+      : '2I + 4I + 12 = 0 \u21d2 I = <b>\u22122.00 A</b>');
+
+    elRef.classList.toggle('flip', !cw);
+    labCard.classList.toggle('mismatch', !cw);
+
+    elPolA.classList.toggle('hide', !plusLeft);
+    elPolB.classList.toggle('hide', plusLeft);
+  }
+
+  function syncLabButtons() {
+    document.querySelectorAll('[data-dir]').forEach(function (b) {
+      var on = b.getAttribute('data-dir') === lab.dir;
+      b.classList.toggle('is-on', on);
+      b.setAttribute('aria-pressed', on ? 'true' : 'false');
+    });
+    document.querySelectorAll('[data-pol]').forEach(function (b) {
+      var on = b.getAttribute('data-pol') === lab.pol;
+      b.classList.toggle('is-on', on);
+      b.setAttribute('aria-pressed', on ? 'true' : 'false');
+    });
+  }
+
+  document.querySelectorAll('[data-dir]').forEach(function (b) {
+    b.addEventListener('click', function () {
+      lab.dir = b.getAttribute('data-dir');
+      renderLab();
+      syncLabButtons();
+    });
+  });
+  document.querySelectorAll('[data-pol]').forEach(function (b) {
+    b.addEventListener('click', function () {
+      lab.pol = b.getAttribute('data-pol');
+      renderLab();
+      syncLabButtons();
+    });
+  });
+
+  renderLab();
+  syncLabButtons();
+
+  /* ---------------- loop arrow ---------------- */
+  var loopDir = 'cw';
+  var loopArrow = document.getElementById('loopArrow');
+  var loopEq = document.getElementById('loopEq');
+  var loopHint = document.getElementById('loopHint');
+
+  function renderLoop() {
+    var cw = loopDir === 'cw';
+    loopArrow.classList.toggle('flip', !cw);
+    loopEq.innerHTML = '<span class="eq-k">KVL（电流参考方向固定为顺时针）</span>' + (cw
+      ? '沿顺时针：2I + 4I \u2212 12 = 0 \u21d2 I = <b>+2.00 A</b>'
+      : '沿逆时针：\u22122I \u2212 4I + 12 = 0 \u21d2 I = <b>+2.00 A</b>');
+    loopHint.textContent = cw
+      ? '绕行方向与电流参考方向同向：电阻项取 +RI。'
+      : '绕行方向与电流参考方向反向：电阻项取 \u2212RI；方程整体变号，解不变。';
+    document.querySelectorAll('[data-loopdir]').forEach(function (b) {
+      var on = b.getAttribute('data-loopdir') === loopDir;
+      b.classList.toggle('is-on', on);
+      b.setAttribute('aria-pressed', on ? 'true' : 'false');
+    });
+  }
+
+  document.querySelectorAll('[data-loopdir]').forEach(function (b) {
+    b.addEventListener('click', function () {
+      loopDir = b.getAttribute('data-loopdir');
+      renderLoop();
+      pop(loopEq);
+    });
+  });
+  renderLoop();
+
+  /* ---------------- origin ---------------- */
+  var originPanel = document.querySelector('.origin-panel') || document.getElementById('origin');
+  var originFlip = document.getElementById('originFlip');
+  var u2Ref = document.getElementById('u2Ref');
+  var u2Actual = document.getElementById('u2Actual');
+
+  if (originFlip && u2Ref && u2Actual) {
+    originFlip.addEventListener('click', function () {
+      var on = originPanel.classList.toggle('show-actual');
+      u2Ref.classList.toggle('hide', on);
+      u2Actual.classList.toggle('hide', !on);
+      originFlip.setAttribute('aria-pressed', on ? 'true' : 'false');
+      originFlip.textContent = on ? '恢复参考极性' : '显示 U\u2082 的实际极性';
+    });
+  }
+
+  /* ---------------- reveal on scroll ---------------- */
+  var revealEls = document.querySelectorAll('.reveal');
+  if ('IntersectionObserver' in window && !reduceMotion) {
+    var io = new IntersectionObserver(function (entries) {
+      entries.forEach(function (en) {
+        if (en.isIntersecting) {
+          en.target.classList.add('is-in');
+          io.unobserve(en.target);
+        }
+      });
+    }, { rootMargin: '0px 0px -8% 0px', threshold: 0.08 });
+    revealEls.forEach(function (el) { io.observe(el); });
+  } else {
+    revealEls.forEach(function (el) { el.classList.add('is-in'); });
+  }
+})();
+</script>
+</body>
+</html>
