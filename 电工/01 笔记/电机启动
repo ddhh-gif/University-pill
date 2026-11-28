@@ -1,0 +1,13 @@
+鼠笼型三相异步电动机的 Y/Δ（星-三角）换接起动 属于降压起动：起动时定子绕组接成 星形（Y） 以降低相电压和起动电流，接近额定转速后再切换为 三角形（Δ） 正常运行。 [1] (/goto?url=CAEScgHEIkXXjbyv3C2sZ9bmVIjDH5bUYtEF5HZZM6xFHbDsyWtscqFvesV31Q17aB1tRnlknTUtvDLMNB0rN_0IHVDUHw2InTpJqAc8I_aMqehLYIUBk88AFIvuuTNJ04yk5nOBsWfmSTuA-l7trdxCfg6PKw), [2] (/goto?url=CAESYAHEIkXXcmelN1fDreke6aidLcKuvcNkVGgiuebsHYxdUxppoegnVNcIfKK59UQHPCqKUJniC78MuU3t-BS4nFxUKJtmV7ryTmXaIBxPhxDVUF85T_m14EW-mRIIF24VGA)
+
+核心原理与变化
+
+• 起动阶段（Y 接法）： 每相绕组承受的电压降为额定电压的 \(\frac{1}{\sqrt{3}}\)（约 \(57.7\%\)），线路起动电流降至三角形直接起动时的 \(\frac{1}{3}\)。
+• 切换节点： 转速接近额定转速（通常由时间继电器控制切换），断开 Y 接并投入 Δ 接法，恢复全压运行。
+• 代价与适用条件： 降压同时起动转矩也降为直接起动时的 \(\frac{1}{3}\)，因此适用于轻载或空载起动、且正常运行为三角形接法的鼠笼型电动机。 [1] (/goto?url=CAESYAHEIkXXcmelN1fDreke6aidLcKuvcNkVGgiuebsHYxdUxppoegnVNcIfKK59UQHPCqKUJniC78MuU3t-BS4nFxUKJtmV7ryTmXaIBxPhxDVUF85T_m14EW-mRIIF24VGA), [2] (/goto?url=CAEScgHEIkXXjbyv3C2sZ9bmVIjDH5bUYtEF5HZZM6xFHbDsyWtscqFvesV31Q17aB1tRnlknTUtvDLMNB0rN_0IHVDUHw2InTpJqAc8I_aMqehLYIUBk88AFIvuuTNJ04yk5nOBsWfmSTuA-l7trdxCfg6PKw)
+如果你需要进一步深入，我可以为你补充：
+• 主电路与控制电路图解析（接触器、时间继电器及互锁逻辑）
+• 起动电流与起动转矩的计算推导（对比直接起动、Y/Δ 与自耦降压起动）
+• 适用负载与选型判断依据（结合电机功率、负载转矩与电网容量）
+请告诉我你想看哪一部分？
+
